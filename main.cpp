@@ -1,5 +1,7 @@
 #include <iostream>
+#include <stdio.h>
 #include <gtk/gtk.h>
+
 
 int main() {
     std::cout << "Hello, World!" << std::endl;

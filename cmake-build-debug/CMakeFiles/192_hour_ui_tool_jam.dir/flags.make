@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = 
+CXX_INCLUDES = -I/usr/local/include/gtk-3.0 -I/usr/local/include/gtk-2.0 -I/usr/local/include/glib-2.0 -I/usr/local/include/glib-2.0/include/glibconfig.h 
 

@@ -10,6 +10,10 @@ set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/usr/local/include/gtk-3.0"
+  "/usr/local/include/gtk-2.0"
+  "/usr/local/include/glib-2.0"
+  "/usr/local/include/glib-2.0/include/glibconfig.h"
   )
 
 # Targets to which this target links.
