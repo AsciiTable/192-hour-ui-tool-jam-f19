@@ -9,11 +9,14 @@ static void hello(GtkWidget *widget, gpointer data){
 static gboolean delete_event(GtkWidget *widget, GdkEvent *event, gpointer data){
     g_print("delete event occurred\n");
 
+    /* Return FALSE to let GTK emit the "destroy" signal */
+    // return FALSE;
+    /* Return TRUE to stop the window from being destroyed -- useful for confirming quit request popups */
     return TRUE;
 }
 
 static void destroy(GtkWidget *widget, gpointer data){
-    gtk_main();
+    gtk_main_quit();
 }
 
 int main(int argc, char *argv[]) {
@@ -25,7 +28,7 @@ int main(int argc, char *argv[]) {
      * calls gtk_init(gint *argc, gchar ***argv) to set up default visual and color map
      * calls gdk_init(gint *argc, gchar ***argv) to set up default signal handlers and checks the arguments
      *       passed to your application on the command line. Removes gtk-module, g-fatal-warnings, gtk-debug,
-     *       gtk-no-debug, display, sync, name, class. Creates a set of standard arguments accepted by all GTK applications */
+     *       gtk-no-debug, display, sync, name, class. Creates a set of bstandard arguments accepted by all GTK applications */
     gtk_init(&argc, & argv);
 
     /** Create a window
@@ -33,16 +36,36 @@ int main(int argc, char *argv[]) {
      * window of 200x200 by default to allow manipulation even w/o children */
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
+    /** "delete-event" signal
+     * Given by the window manager ("close option" or on the titlebar)
+     * We ask it to call the delete_event() function and the data passed back to the callback
+     * function is NULL and ignored in the callback function.
+     */
     g_signal_connect(window, "delete-event", G_CALLBACK(delete_event), NULL);
 
-    g_signal_connect(window, "delete-event", G_CALLBACK(destroy), NULL);
+    /** "destroy" signal
+     * Occurs when we call gtk_widget_destroy() on the window OR if we return FALSE in the "delete-event" callback.
+     */
+    g_signal_connect(window, "destroy", G_CALLBACK(destroy), NULL);
 
+    /* Sets the border width of the window */
+    gtk_container_set_border_width(GTK_CONTAINER(window), 10);
+
+    /* Creates a new button with the label "Hello World" */
     button = gtk_button_new_with_label ("Hello World");
 
+    /** "clicked" signal
+     * When button is clicked, it will call the function hello() passing it NULL as its argument
+     */
     g_signal_connect(button, "clicked", G_CALLBACK(hello), NULL);
 
+    /** "clicked" signal con't
+     * Causes the window to be destroyed by calling gtk_widget_destroy(window) when "clicked"
+     * Destroy signal can come from here or the window manager
+     */
     g_signal_connect_swapped(button, "clicked", G_CALLBACK(gtk_widget_destroy), window);
 
+    /* Pack the button into a window (aka a gtk container) */
     gtk_container_add(GTK_CONTAINER(window), button);
 
     /* Displays button */

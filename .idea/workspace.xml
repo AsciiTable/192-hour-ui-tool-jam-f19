@@ -12,6 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d4ed2fbd-200b-4760-983d-83d6269e9ab4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -36,8 +37,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="87" lean-forward="true" selection-start-line="24" selection-start-column="87" selection-end-line="24" selection-end-column="87" />
+            <state relative-caret-position="190">
+              <caret line="13" column="106" selection-start-line="13" selection-start-column="106" selection-end-line="13" selection-end-column="106" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -48,7 +49,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file:///usr/local/Cellar/gtk+3/3.24.12_1/include/gtk-3.0/gtk/gtk.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
+            <state relative-caret-position="4125">
               <caret line="275" column="10" selection-start-line="275" selection-start-column="10" selection-end-line="275" selection-end-column="10" />
             </state>
           </provider>
@@ -81,9 +82,10 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
+    <option name="x" value="687" />
     <option name="y" value="23" />
-    <option name="width" value="1440" />
+    <option name="width" value="753" />
     <option name="height" value="841" />
   </component>
   <component name="ProjectView">
@@ -129,12 +131,13 @@
       <workItem from="1572146173765" duration="502000" />
       <workItem from="1572148205052" duration="224000" />
       <workItem from="1572148656361" duration="232000" />
-      <workItem from="1572148922551" duration="9924000" />
+      <workItem from="1572148922551" duration="9953000" />
+      <workItem from="1572198380984" duration="2297000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10882000" />
+    <option name="totallyTimeSpent" value="13208000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -146,10 +149,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="841" extended-state="6" />
+    <frame x="687" y="23" width="753" height="841" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26037195" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07313643" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -265,7 +268,7 @@
     </entry>
     <entry file="file:///usr/local/Cellar/gtk+3/3.24.12_1/include/gtk-3.0/gtk/gtk.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
+        <state relative-caret-position="4125">
           <caret line="275" column="10" selection-start-line="275" selection-start-column="10" selection-end-line="275" selection-end-column="10" />
         </state>
       </provider>
@@ -279,8 +282,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="87" lean-forward="true" selection-start-line="24" selection-start-column="87" selection-end-line="24" selection-end-column="87" />
+        <state relative-caret-position="190">
+          <caret line="13" column="106" selection-start-line="13" selection-start-column="106" selection-end-line="13" selection-end-column="106" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
