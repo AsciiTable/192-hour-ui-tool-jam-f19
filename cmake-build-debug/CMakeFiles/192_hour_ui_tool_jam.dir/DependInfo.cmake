@@ -10,10 +10,26 @@ set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/usr/local/include/gtk-3.0"
-  "/usr/local/include/gtk-2.0"
-  "/usr/local/include/glib-2.0"
-  "/usr/local/include/glib-2.0/include/glibconfig.h"
+  "/usr/local/Cellar/libffi/3.2.1/lib/libffi-3.2.1/include"
+  "/usr/local/Cellar/gtk+3/3.24.12_1/include/gtk-3.0"
+  "/usr/local/Cellar/glib/2.62.2/include/gio-unix-2.0"
+  "/usr/local/Cellar/cairo/1.16.0_2/include/cairo"
+  "/usr/local/Cellar/libepoxy/1.5.3/include"
+  "/usr/local/Cellar/pango/1.44.7/include/pango-1.0"
+  "/usr/local/Cellar/fribidi/1.0.7/include/fribidi"
+  "/usr/local/Cellar/harfbuzz/2.6.2/include/harfbuzz"
+  "/usr/local/Cellar/graphite2/1.3.13/include"
+  "/usr/local/Cellar/atk/2.34.1/include/atk-1.0"
+  "/usr/local/Cellar/pixman/0.38.4/include/pixman-1"
+  "/usr/local/Cellar/fontconfig/2.13.1/include"
+  "/usr/local/opt/freetype/include/freetype2"
+  "/usr/local/Cellar/libpng/1.6.37/include/libpng16"
+  "/usr/local/Cellar/gdk-pixbuf/2.40.0/include/gdk-pixbuf-2.0"
+  "/usr/local/Cellar/glib/2.62.2/include"
+  "/usr/local/Cellar/glib/2.62.2/include/glib-2.0"
+  "/usr/local/Cellar/glib/2.62.2/lib/glib-2.0/include"
+  "/usr/local/opt/gettext/include"
+  "/usr/local/Cellar/pcre/8.43/include"
   )
 
 # Targets to which this target links.
