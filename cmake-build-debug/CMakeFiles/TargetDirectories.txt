@@ -1,0 +1,3 @@
+/Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/cmake-build-debug/CMakeFiles/192_hour_ui_tool_jam.dir
