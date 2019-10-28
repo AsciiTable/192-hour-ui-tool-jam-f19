@@ -36,6 +36,8 @@ int main(int argc, char *argv[]) {
      * window of 200x200 by default to allow manipulation even w/o children */
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
+    /** gulong g_signal_connect(gpointer *object, const gchar *name, GCallback func, gpointer func_data);*/
+
     /** "delete-event" signal
      * Given by the window manager ("close option" or on the titlebar)
      * We ask it to call the delete_event() function and the data passed back to the callback
