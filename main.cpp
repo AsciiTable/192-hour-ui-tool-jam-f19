@@ -2,17 +2,22 @@
 #include <stdio.h>
 #include <gtk/gtk.h>
 
+static void callback(GtkWidget *widget, gpointer data){
+    g_print("Hello! %s was pressed\n", (gchar *) data);
+}
+
 static void hello(GtkWidget *widget, gpointer data){
     g_print("Hello World!\n");
 }
 
 static gboolean delete_event(GtkWidget *widget, GdkEvent *event, gpointer data){
     g_print("delete event occurred\n");
+    gtk_main_quit();
 
     /* Return FALSE to let GTK emit the "destroy" signal */
-    // return FALSE;
+    return FALSE;
     /* Return TRUE to stop the window from being destroyed -- useful for confirming quit request popups */
-    return TRUE;
+    //return TRUE;
 }
 
 static void destroy(GtkWidget *widget, gpointer data){
@@ -23,6 +28,7 @@ int main(int argc, char *argv[]) {
     /* GtkWidget is the storage type for widgets */
     GtkWidget *window;
     GtkWidget *button;
+    GtkWidget *box1;
 
     /**
      * calls gtk_init(gint *argc, gchar ***argv) to set up default visual and color map
@@ -36,6 +42,9 @@ int main(int argc, char *argv[]) {
      * window of 200x200 by default to allow manipulation even w/o children */
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
+    /* Set title of window */
+    gtk_window_set_title(GTK_WINDOW(window), "Hello Buttons!");
+
     /** gulong g_signal_connect(gpointer *object, const gchar *name, GCallback func, gpointer func_data);*/
 
     /** "delete-event" signal
@@ -45,10 +54,16 @@ int main(int argc, char *argv[]) {
      */
     g_signal_connect(window, "delete-event", G_CALLBACK(delete_event), NULL);
 
+    /* Set the border width of the window */
+    gtk_container_set_border_width(GTK_CONTAINER(window), 10);
+
+
+    box1 = gtk_box_new(FALSE, 0);
+
     /** "destroy" signal
      * Occurs when we call gtk_widget_destroy() on the window OR if we return FALSE in the "delete-event" callback.
      */
-    g_signal_connect(window, "destroy", G_CALLBACK(destroy), NULL);
+    // g_signal_connect(window, "destroy", G_CALLBACK(destroy), NULL);
 
     /* Sets the border width of the window */
     gtk_container_set_border_width(GTK_CONTAINER(window), 10);
