@@ -58,7 +58,11 @@ int main(int argc, char *argv[]) {
     gtk_container_set_border_width(GTK_CONTAINER(window), 10);
 
 
-    box1 = gtk_box_new(FALSE, 0);
+    box1 = gtk_hbox_new(FALSE, 0);
+
+    gtk_container_add(GTK_CONTAINER(window),box1);
+
+    button = gtk_button_new_with_label("Button 1");
 
     /** "destroy" signal
      * Occurs when we call gtk_widget_destroy() on the window OR if we return FALSE in the "delete-event" callback.
