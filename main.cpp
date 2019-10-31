@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <gtk/gtk.h>
 
+static GtkWidget *make_box(gboolean homogeneous, gint spacing, gboolean expand, gboolean fill, guint padding){
+
+}
 static void callback(GtkWidget *widget, gpointer data){
     g_print("Hello! %s was pressed\n", (gchar *) data);
 }
@@ -34,7 +37,7 @@ int main(int argc, char *argv[]) {
      * calls gtk_init(gint *argc, gchar ***argv) to set up default visual and color map
      * calls gdk_init(gint *argc, gchar ***argv) to set up default signal handlers and checks the arguments
      *       passed to your application on the command line. Removes gtk-module, g-fatal-warnings, gtk-debug,
-     *       gtk-no-debug, display, sync, name, class. Creates a set of bstandard arguments accepted by all GTK applications */
+     *       gtk-no-debug, display, sync, name, class. Creates a set of standard arguments accepted by all GTK applications */
     gtk_init(&argc, & argv);
 
     /** Create a window
@@ -58,7 +61,7 @@ int main(int argc, char *argv[]) {
     gtk_container_set_border_width(GTK_CONTAINER(window), 10);
 
 
-    box1 = gtk_hbox_new(FALSE, 0);
+    box1 = gtk_hbox_new(TRUE, 10);
 
     gtk_container_add(GTK_CONTAINER(window),box1);
 
@@ -66,6 +69,7 @@ int main(int argc, char *argv[]) {
 
     g_signal_connect(button,"clicked",G_CALLBACK(callback),(gpointer)"button 1");
 
+    /*Pack button 1 (and eventually button 2) from left to right*/
     gtk_box_pack_start(GTK_BOX(box1), button, TRUE, TRUE, 0);
 
     gtk_widget_show(button);
