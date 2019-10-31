@@ -64,33 +64,46 @@ int main(int argc, char *argv[]) {
 
     button = gtk_button_new_with_label("Button 1");
 
+    g_signal_connect(button,"clicked",G_CALLBACK(callback),(gpointer)"button 1");
+
+    gtk_box_pack_start(GTK_BOX(box1), button, TRUE, TRUE, 0);
+
+    gtk_widget_show(button);
+
+    button = gtk_button_new_with_label("Button 2");
+
+    g_signal_connect(button, "clicked", G_CALLBACK(callback),(gpointer)"button 2");
+    gtk_box_pack_start(GTK_BOX(box1), button, TRUE, TRUE, 0);
+
     /** "destroy" signal
      * Occurs when we call gtk_widget_destroy() on the window OR if we return FALSE in the "delete-event" callback.
      */
     // g_signal_connect(window, "destroy", G_CALLBACK(destroy), NULL);
 
     /* Sets the border width of the window */
-    gtk_container_set_border_width(GTK_CONTAINER(window), 10);
+    //gtk_container_set_border_width(GTK_CONTAINER(window), 10);
 
     /* Creates a new button with the label "Hello World" */
-    button = gtk_button_new_with_label ("Hello World");
+    //button = gtk_button_new_with_label ("Hello World");
 
     /** "clicked" signal
      * When button is clicked, it will call the function hello() passing it NULL as its argument
      */
-    g_signal_connect(button, "clicked", G_CALLBACK(hello), NULL);
+    //g_signal_connect(button, "clicked", G_CALLBACK(hello), NULL);
 
     /** "clicked" signal con't
      * Causes the window to be destroyed by calling gtk_widget_destroy(window) when "clicked"
      * Destroy signal can come from here or the window manager
      */
-    g_signal_connect_swapped(button, "clicked", G_CALLBACK(gtk_widget_destroy), window);
+    //g_signal_connect_swapped(button, "clicked", G_CALLBACK(gtk_widget_destroy), window);
 
     /* Pack the button into a window (aka a gtk container) */
-    gtk_container_add(GTK_CONTAINER(window), button);
+    //gtk_container_add(GTK_CONTAINER(window), button);
 
     /* Displays button */
     gtk_widget_show(button);
+
+    gtk_widget_show(box1);
 
     /** Displays the window
      * Lets GTK know that we are done setting the attributes of this widget and that it can display it
