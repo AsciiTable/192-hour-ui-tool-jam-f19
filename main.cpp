@@ -70,13 +70,24 @@ int main(int argc, char *argv[]) {
     GtkWidget *window;
     GtkWidget *button;
     GtkWidget *box1;
+    GtkWidget *box2;
+    GtkWidget *separator;
+    GtkWidget *label;
+    GtkWidget *quitbox;
+    int which;
 
-    /**
+    /** Our init, never forget this!!
      * calls gtk_init(gint *argc, gchar ***argv) to set up default visual and color map
      * calls gdk_init(gint *argc, gchar ***argv) to set up default signal handlers and checks the arguments
      *       passed to your application on the command line. Removes gtk-module, g-fatal-warnings, gtk-debug,
      *       gtk-no-debug, display, sync, name, class. Creates a set of standard arguments accepted by all GTK applications */
     gtk_init(&argc, & argv);
+
+    if(argc != 2){
+        fprintf (stderr, "usage: packbox num, where num is 1, 2, or 3.\n");
+        /*Cleans up in GTK and exists with an exit status of 1*/
+        exit(1);
+    }
 
     /** Create a window
      * GTK_WINDOW_TOPLEVEL says that we want the window to undergo window manager decoration and placement. Creates a
