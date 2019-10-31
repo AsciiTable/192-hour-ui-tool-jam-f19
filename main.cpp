@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdio.h>
+#include <stdlib.h>
 #include <gtk/gtk.h>
 
 static GtkWidget *make_hbox(gboolean homogeneous, gint spacing, gboolean expand, gboolean fill, guint padding){
@@ -74,7 +75,7 @@ int main(int argc, char *argv[]) {
     GtkWidget *separator;
     GtkWidget *label;
     GtkWidget *quitbox;
-    int which;
+    int which = 1;
 
     /** Our init, never forget this!!
      * calls gtk_init(gint *argc, gchar ***argv) to set up default visual and color map
@@ -86,6 +87,7 @@ int main(int argc, char *argv[]) {
     if(argc != 2){
         fprintf (stderr, "usage: packbox num, where num is 1, 2, or 3.\n");
         /*Cleans up in GTK and exists with an exit status of 1*/
+        std::cout << argc;
         exit(1);
     }
 
@@ -275,7 +277,7 @@ int main(int argc, char *argv[]) {
 
     //button = gtk_button_new_with_label("Button 2");
 
-    g_signal_connect(button, "clicked", G_CALLBACK(callback),(gpointer)"button 2");
+    //g_signal_connect(button, "clicked", G_CALLBACK(callback),(gpointer)"button 2");
     //gtk_box_pack_start(GTK_BOX(box1), button, TRUE, TRUE, 0);
 
     /** "destroy" signal
