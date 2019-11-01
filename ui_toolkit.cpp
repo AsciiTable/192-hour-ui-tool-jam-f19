@@ -10,4 +10,6 @@
 
 int main(int argc, char *argv[]){
     GtkWidget *window;
+    GtkWidget *completebutton;
+    GtkWidget *exitbutton;
 }
