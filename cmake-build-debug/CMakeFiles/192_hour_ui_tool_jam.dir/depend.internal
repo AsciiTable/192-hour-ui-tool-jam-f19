@@ -3,6 +3,7 @@
 
 CMakeFiles/192_hour_ui_tool_jam.dir/main.cpp.o
  /Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/main.cpp
+ /Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/ui_toolkit.h
  /usr/local/Cellar/atk/2.34.1/include/atk-1.0/atk/atk-enum-types.h
  /usr/local/Cellar/atk/2.34.1/include/atk-1.0/atk/atk.h
  /usr/local/Cellar/atk/2.34.1/include/atk-1.0/atk/atkaction.h
@@ -639,6 +640,8 @@ CMakeFiles/192_hour_ui_tool_jam.dir/main.cpp.o
  /usr/local/Cellar/pango/1.44.7/include/pango-1.0/pango/pango-version-macros.h
  /usr/local/Cellar/pango/1.44.7/include/pango-1.0/pango/pango.h
  /usr/local/Cellar/pango/1.44.7/include/pango-1.0/pango/pangocairo.h
+CMakeFiles/192_hour_ui_tool_jam.dir/notes.cpp.o
+ /Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/cmake-build-debug/notes.cpp
 CMakeFiles/192_hour_ui_tool_jam.dir/ui_toolkit.cpp.o
  /Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/ui_toolkit.cpp
  /Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/ui_toolkit.h
