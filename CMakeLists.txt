@@ -13,6 +13,6 @@ link_directories(${GTK3_LIBRARY_DIRS})
 
 add_definitions(${GTK3_CFLAGS_OTHER})
 
-add_executable(192_hour_ui_tool_jam main.cpp)
+add_executable(192_hour_ui_tool_jam main.cpp ui_toolkit.cpp ui_toolkit.h)
 target_link_libraries(192_hour_ui_tool_jam ${GTK3_LIBRARIES})
 

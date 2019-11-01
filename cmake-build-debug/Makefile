@@ -150,6 +150,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/192_hour_ui_tool_jam.dir/build.make CMakeFiles/192_hour_ui_tool_jam.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+ui_toolkit.o: ui_toolkit.cpp.o
+
+.PHONY : ui_toolkit.o
+
+# target to build an object file
+ui_toolkit.cpp.o:
+	$(MAKE) -f CMakeFiles/192_hour_ui_tool_jam.dir/build.make CMakeFiles/192_hour_ui_tool_jam.dir/ui_toolkit.cpp.o
+.PHONY : ui_toolkit.cpp.o
+
+ui_toolkit.i: ui_toolkit.cpp.i
+
+.PHONY : ui_toolkit.i
+
+# target to preprocess a source file
+ui_toolkit.cpp.i:
+	$(MAKE) -f CMakeFiles/192_hour_ui_tool_jam.dir/build.make CMakeFiles/192_hour_ui_tool_jam.dir/ui_toolkit.cpp.i
+.PHONY : ui_toolkit.cpp.i
+
+ui_toolkit.s: ui_toolkit.cpp.s
+
+.PHONY : ui_toolkit.s
+
+# target to generate assembly for a file
+ui_toolkit.cpp.s:
+	$(MAKE) -f CMakeFiles/192_hour_ui_tool_jam.dir/build.make CMakeFiles/192_hour_ui_tool_jam.dir/ui_toolkit.cpp.s
+.PHONY : ui_toolkit.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,6 +189,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... ui_toolkit.o"
+	@echo "... ui_toolkit.i"
+	@echo "... ui_toolkit.s"
 .PHONY : help
 
 
