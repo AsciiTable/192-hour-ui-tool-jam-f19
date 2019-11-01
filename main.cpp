@@ -9,7 +9,7 @@ int main(int argc, char* argv[]) {
     ui_toolkit tool;
     GtkWidget *window;
     //GtkWidget *completebutton;
-    //GtkWidget *exitbutton;
+    GtkWidget *exitbutton;
     //GtkWidget *tabel;
 
     gtk_init(&argc, &argv);
