@@ -17,7 +17,6 @@ int main(int argc, char* argv[]) {
     gtk_init(&argc, &argv);
 
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    pdimen.grid = grid;
 
     gtk_window_set_title(GTK_WINDOW(window), "UI Toolkit");
 
@@ -30,6 +29,7 @@ int main(int argc, char* argv[]) {
     gtk_grid_set_column_spacing(GTK_GRID(grid),10);
     /* Puts the table in the main window */
     gtk_container_add (GTK_CONTAINER (window), grid);
+    pdimen.grid = grid;
 
     /* Row Spin Button */
     label = gtk_label_new("Row: ");
@@ -42,7 +42,6 @@ int main(int argc, char* argv[]) {
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(rspin), true);
     gtk_widget_show(rspin);
     pdimen.row = rspin;
-    //pdimen.row = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(rspin));
 
     /* Column Spin Button */
     label = gtk_label_new("Column: ");
@@ -55,7 +54,6 @@ int main(int argc, char* argv[]) {
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(cspin), true);
     gtk_widget_show(cspin);
     pdimen.col = cspin;
-    //pdimen.col = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(cspin));
 
     /* Space for Formatting */
     space = gtk_label_new("");
