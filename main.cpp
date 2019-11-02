@@ -10,6 +10,10 @@ int main(int argc, char* argv[]) {
     GtkWidget *window;
     GtkWidget *button;
     GtkWidget *grid;
+    GtkWidget *label, *space;
+    GtkWidget *rspin, *cspin;
+
+    bool playgroundCreated = false;
 
     gtk_init(&argc, &argv);
 
@@ -19,30 +23,55 @@ int main(int argc, char* argv[]) {
 
     g_signal_connect(window, "delete-event", G_CALLBACK(tool.delete_event),NULL);
 
-    gtk_container_set_border_width(GTK_CONTAINER(window), 20);
+    gtk_container_set_border_width(GTK_CONTAINER(window), 30);
 
-    grid = gtk_grid_new();
-    gtk_grid_set_row_spacing(GTK_GRID(grid),5);
-    /* Puts the table in the main window */
-    gtk_container_add (GTK_CONTAINER (window), grid);
+    if(!playgroundCreated){
+        grid = gtk_grid_new();
+        gtk_grid_set_row_spacing(GTK_GRID(grid),5);
+        gtk_grid_set_column_spacing(GTK_GRID(grid),10);
+        /* Puts the table in the main window */
+        gtk_container_add (GTK_CONTAINER (window), grid);
 
+        /* Row Spin Button */
+        label = gtk_label_new("Row: ");
+        gtk_label_set_xalign(GTK_LABEL(label), 0);
+        gtk_grid_attach(GTK_GRID(grid), label, 0, 0, 1, 1);
+        gtk_widget_show(label);
 
-    /* Insert button 1 into the upper left quadrant of the table */
-    button = gtk_button_new_with_label ("button 1");
-    g_signal_connect (button, "clicked",G_CALLBACK (tool.callback), (gpointer) "button 1");
-    gtk_grid_attach(GTK_GRID(grid), button, 0, 1, 1, 1);
-    gtk_widget_show (button);
+        rspin = gtk_spin_button_new_with_range(1, 10, 1);
+        gtk_grid_attach(GTK_GRID(grid), rspin, 1, 0, 1, 1);
+        gtk_widget_show(rspin);
 
-    gtk_grid_insert_row(GTK_GRID(grid), 2);
+        /* Column Spin Button */
+        label = gtk_label_new("Column: ");
+        gtk_label_set_xalign(GTK_LABEL(label), 0);
+        gtk_grid_attach(GTK_GRID(grid), label, 0, 1, 1, 1);
+        gtk_widget_show(label);
 
+        cspin = gtk_spin_button_new_with_range(1, 10, 1);
+        gtk_grid_attach(GTK_GRID(grid), cspin, 1, 1, 1, 1);
+        gtk_widget_show(cspin);
 
-    button = gtk_button_new_with_label("Quit");
-    g_signal_connect(button, "clicked", G_CALLBACK(tool.delete_event), NULL);
-    gtk_grid_attach(GTK_GRID(grid), button, 0, 3, 1, 1);
-    gtk_widget_show(button);
+        /* Space for Formatting */
+        space = gtk_label_new("");
+        gtk_grid_attach(GTK_GRID(grid), space, 0, 2, 2, 1);
+        gtk_widget_show(space);
 
-    gtk_widget_show(grid);
-    gtk_widget_show(window);
+        /* Create Playground Button */
+        button = gtk_button_new_with_label ("Create Playground");
+        g_signal_connect (button, "clicked",G_CALLBACK (tool.callback), (gpointer) "button 1");
+        gtk_grid_attach(GTK_GRID(grid), button, 0, 3, 2, 1);
+        gtk_widget_show (button);
+
+        /* Quit Button */
+        button = gtk_button_new_with_label("Quit");
+        g_signal_connect(button, "clicked", G_CALLBACK(tool.delete_event), NULL);
+        gtk_grid_attach(GTK_GRID(grid), button, 0, 4, 2, 1);
+        gtk_widget_show(button);
+
+        gtk_widget_show(grid);
+        gtk_widget_show(window);
+    }
 
     gtk_main();
     return 0;

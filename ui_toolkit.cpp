@@ -72,11 +72,11 @@ void ui_toolkit::destroy(GtkWidget *widget, gpointer data){
     gtk_main_quit();
 }
 
-GtkWidget *make_playground(int r, int c, bool h, GtkWidget *window){
+GtkWidget *ui_toolkit::make_playground(int r, int c, bool h){
     GtkWidget *playground;
 
     playground = gtk_table_new(r, c, h);
-    gtk_container_add (GTK_CONTAINER (window), playground);
+    //gtk_container_add (GTK_CONTAINER (window), playground);
 
     return playground;
 }
