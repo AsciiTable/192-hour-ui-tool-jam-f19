@@ -2,11 +2,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <gtk/gtk.h>
+#include <string>
 #include "ui_toolkit.h"
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    int MAINROWCOUNT = 6;
+    const int MAINROWCOUNT = 10;
+    static int COMPONENTCOUNT = 0;
     ui_toolkit tool;
     ui_toolkit::PlaygroundDimensions pdimen;
     GtkWidget *window;
@@ -29,18 +31,29 @@ int main(int argc, char* argv[]) {
 
     grid = gtk_grid_new();
     gtk_grid_set_row_spacing(GTK_GRID(grid),5);
-    gtk_grid_set_column_spacing(GTK_GRID(grid),10);
+    gtk_grid_set_column_spacing(GTK_GRID(grid),15);
     /* Puts the table in the main window */
     gtk_container_add (GTK_CONTAINER (window), grid);
+
+    /* Option Section Header */
+    label = gtk_label_new("Configurations");
+    gtk_label_set_xalign(GTK_LABEL(label), 0);
+    gtk_grid_attach(GTK_GRID(grid), label, 0, 0, 1, 1);
+    gtk_widget_show(label);
+
+    /* Space for Formatting */
+    space = gtk_label_new("");
+    gtk_grid_attach(GTK_GRID(grid), space, 0, 1, 2, 1);
+    gtk_widget_show(space);
 
     /* Row Spin Button */
     label = gtk_label_new("Row: ");
     gtk_label_set_xalign(GTK_LABEL(label), 0);
-    gtk_grid_attach(GTK_GRID(grid), label, 0, MAINROWCOUNT-6, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), label, 0, MAINROWCOUNT-8, 1, 1);
     gtk_widget_show(label);
 
     rspin = gtk_spin_button_new_with_range(1, 10, 1);
-    gtk_grid_attach(GTK_GRID(grid), rspin, 1, MAINROWCOUNT-6, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), rspin, 1, MAINROWCOUNT-8, 1, 1);
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(rspin), true);
     gtk_widget_show(rspin);
     pdimen.row = rspin;
@@ -48,11 +61,11 @@ int main(int argc, char* argv[]) {
     /* Row Space Spin Button */
     label = gtk_label_new("Row Space: ");
     gtk_label_set_xalign(GTK_LABEL(label), 0);
-    gtk_grid_attach(GTK_GRID(grid), label, 0, MAINROWCOUNT-5, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), label, 0, MAINROWCOUNT-7, 1, 1);
     gtk_widget_show(label);
 
-    rspin = gtk_spin_button_new_with_range(10, 100, 1);
-    gtk_grid_attach(GTK_GRID(grid), rspin, 1, MAINROWCOUNT-5, 1, 1);
+    rspin = gtk_spin_button_new_with_range(5, 100, 1);
+    gtk_grid_attach(GTK_GRID(grid), rspin, 1, MAINROWCOUNT-7, 1, 1);
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(rspin), true);
     gtk_widget_show(rspin);
     pdimen.rowSize = rspin;
@@ -60,11 +73,11 @@ int main(int argc, char* argv[]) {
     /* Column Spin Button */
     label = gtk_label_new("Column: ");
     gtk_label_set_xalign(GTK_LABEL(label), 0);
-    gtk_grid_attach(GTK_GRID(grid), label, 0, MAINROWCOUNT-4, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), label, 0, MAINROWCOUNT-6, 1, 1);
     gtk_widget_show(label);
 
     cspin = gtk_spin_button_new_with_range(1, 10, 1);
-    gtk_grid_attach(GTK_GRID(grid), cspin, 1, MAINROWCOUNT-4, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), cspin, 1, MAINROWCOUNT-6, 1, 1);
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(cspin), true);
     gtk_widget_show(cspin);
     pdimen.col = cspin;
@@ -72,14 +85,31 @@ int main(int argc, char* argv[]) {
     /* Column Space Spin Button */
     label = gtk_label_new("Column Space: ");
     gtk_label_set_xalign(GTK_LABEL(label), 0);
-    gtk_grid_attach(GTK_GRID(grid), label, 0, MAINROWCOUNT-3, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), label, 0, MAINROWCOUNT-5, 1, 1);
     gtk_widget_show(label);
 
-    cspin = gtk_spin_button_new_with_range(10, 100, 1);
-    gtk_grid_attach(GTK_GRID(grid), cspin, 1, MAINROWCOUNT-3, 1, 1);
+    cspin = gtk_spin_button_new_with_range(5, 100, 1);
+    gtk_grid_attach(GTK_GRID(grid), cspin, 1, MAINROWCOUNT-5, 1, 1);
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(cspin), true);
     gtk_widget_show(cspin);
     pdimen.colSize = cspin;
+
+    /* Space for Formatting */
+    space = gtk_label_new("");
+    gtk_grid_attach(GTK_GRID(grid), space, 0, MAINROWCOUNT-4, 2, 1);
+    gtk_widget_show(space);
+
+    /* Create Textbox Button */
+    button = gtk_button_new_with_label ("Create Text");
+    g_signal_connect (button, "clicked",G_CALLBACK (tool.make_playground), &pdimen);
+    gtk_grid_attach(GTK_GRID(grid), button, 0, MAINROWCOUNT-3, 1, 1);
+    gtk_widget_show (button);
+
+    /* Create Button Button */
+    button = gtk_button_new_with_label ("Create Button");
+    g_signal_connect (button, "clicked",G_CALLBACK (tool.make_playground), &pdimen);
+    gtk_grid_attach(GTK_GRID(grid), button, 1, MAINROWCOUNT-3, 1, 1);
+    gtk_widget_show (button);
 
     /* Space for Formatting */
     space = gtk_label_new("");
