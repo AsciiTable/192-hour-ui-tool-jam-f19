@@ -12,6 +12,8 @@ class ui_toolkit {
 public:
     static gboolean delete_event(GtkWidget *widget, GdkEvent *event, gpointer data);
     static GtkWidget *make_playground(GtkWidget *widget, gpointer data);
+    static GtkWidget *make_text(GtkWidget *widget, gpointer data);
+    static GtkWidget *make_button(GtkWidget *widget, gpointer data);
     struct PlaygroundDimensions{
         GtkWidget *row, *col, *rowSize, *colSize;
         GtkWidget *play;
@@ -21,11 +23,16 @@ public:
         GtkWidget *textbox;
         GtkWidget *userText;
         GtkWidget *posRow, *posCol;
+        GtkWidget *play;
         GtkWidget *playwin, *configwin, *mainwin;
         string compString;
+        gint compCount;
     };
     struct PlaygroundButton{
+        GtkWidget *button;
         GtkWidget *playwin, *configwin, *mainwin;
+        string compString;
+        gint compCount;
     };
 };
 

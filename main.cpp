@@ -11,6 +11,8 @@ int main(int argc, char* argv[]) {
     static int COMPONENTCOUNT = 0;
     ui_toolkit tool;
     ui_toolkit::PlaygroundDimensions pdimen;
+    ui_toolkit::PlaygroundText ptext;
+    ui_toolkit::PlaygroundButton pbutton;
     GtkWidget *window;
     GtkWidget *button;
     GtkWidget *grid;
@@ -101,13 +103,13 @@ int main(int argc, char* argv[]) {
 
     /* Create Textbox Button */
     button = gtk_button_new_with_label ("Create Text");
-    g_signal_connect (button, "clicked",G_CALLBACK (tool.make_playground), &pdimen);
+    g_signal_connect (button, "clicked",G_CALLBACK (tool.make_text), &ptext);
     gtk_grid_attach(GTK_GRID(grid), button, 0, MAINROWCOUNT-3, 1, 1);
     gtk_widget_show (button);
 
     /* Create Button Button */
     button = gtk_button_new_with_label ("Create Button");
-    g_signal_connect (button, "clicked",G_CALLBACK (tool.make_playground), &pdimen);
+    g_signal_connect (button, "clicked",G_CALLBACK (tool.make_button), &pbutton);
     gtk_grid_attach(GTK_GRID(grid), button, 1, MAINROWCOUNT-3, 1, 1);
     gtk_widget_show (button);
 

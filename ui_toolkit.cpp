@@ -56,6 +56,17 @@ GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
     gtk_widget_show(p->play);
     gtk_widget_show(p->playwin);
 
-
     return p->playwin;
+}
+
+GtkWidget *ui_toolkit::make_text(GtkWidget *widget, gpointer data){
+    PlaygroundText *t = (PlaygroundText*)data;
+    cout << "Textbox making in progress!\n";
+    return t->textbox;
+}
+
+GtkWidget *ui_toolkit::make_button(GtkWidget *widget, gpointer data){
+    PlaygroundButton *b = (PlaygroundButton*)data;
+    cout << "Button making in progress!\n";
+    return b->button;
 }

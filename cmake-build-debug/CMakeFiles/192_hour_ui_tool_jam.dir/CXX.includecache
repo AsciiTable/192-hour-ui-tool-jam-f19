@@ -6,20 +6,24 @@
 
 #IncludeRegexTransform: 
 
-/Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/main.cpp
+/Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/ui_toolkit.cpp
+ui_toolkit.h
+/Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/ui_toolkit.h
 iostream
 -
 stdio.h
 -
 stdlib.h
 -
+string
+-
 gtk/gtk.h
 -
-ui_toolkit.h
-/Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/ui_toolkit.h
 
 /Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/ui_toolkit.h
 gtk/gtk.h
+-
+string
 -
 
 /usr/local/Cellar/atk/2.34.1/include/atk-1.0/atk/atk-enum-types.h
