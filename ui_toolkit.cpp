@@ -71,3 +71,12 @@ gboolean ui_toolkit::delete_event(GtkWidget *widget, GdkEvent *event, gpointer d
 void ui_toolkit::destroy(GtkWidget *widget, gpointer data){
     gtk_main_quit();
 }
+
+GtkWidget *make_playground(int r, int c, bool h, GtkWidget *window){
+    GtkWidget *playground;
+
+    playground = gtk_table_new(r, c, h);
+    gtk_container_add (GTK_CONTAINER (window), playground);
+
+    return playground;
+}

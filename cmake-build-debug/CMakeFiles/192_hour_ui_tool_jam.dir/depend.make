@@ -640,7 +640,6 @@ CMakeFiles/192_hour_ui_tool_jam.dir/main.cpp.o: /usr/local/Cellar/pango/1.44.7/i
 CMakeFiles/192_hour_ui_tool_jam.dir/main.cpp.o: /usr/local/Cellar/pango/1.44.7/include/pango-1.0/pango/pango.h
 CMakeFiles/192_hour_ui_tool_jam.dir/main.cpp.o: /usr/local/Cellar/pango/1.44.7/include/pango-1.0/pango/pangocairo.h
 
-CMakeFiles/192_hour_ui_tool_jam.dir/notes.cpp.o: notes.cpp
 
 CMakeFiles/192_hour_ui_tool_jam.dir/ui_toolkit.cpp.o: ../ui_toolkit.cpp
 CMakeFiles/192_hour_ui_tool_jam.dir/ui_toolkit.cpp.o: ../ui_toolkit.h

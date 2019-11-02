@@ -120,13 +120,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/cmake-build-debug/notes.cpp">
-			<Option target="192_hour_ui_tool_jam"/>
-		</Unit>
-		<Unit filename="/Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/cmake-build-debug/notes.h">
-			<Option target="192_hour_ui_tool_jam"/>
-		</Unit>
 		<Unit filename="/Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/main.cpp">
+			<Option target="192_hour_ui_tool_jam"/>
+		</Unit>
+		<Unit filename="/Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/notes.cpp">
+			<Option target="192_hour_ui_tool_jam"/>
+		</Unit>
+		<Unit filename="/Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/notes.h">
 			<Option target="192_hour_ui_tool_jam"/>
 		</Unit>
 		<Unit filename="/Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/ui_toolkit.cpp">

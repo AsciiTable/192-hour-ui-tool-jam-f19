@@ -84,17 +84,17 @@ CMakeFiles/192_hour_ui_tool_jam.dir/ui_toolkit.cpp.s: cmake_force
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/ui_toolkit.cpp -o CMakeFiles/192_hour_ui_tool_jam.dir/ui_toolkit.cpp.s
 
 CMakeFiles/192_hour_ui_tool_jam.dir/notes.cpp.o: CMakeFiles/192_hour_ui_tool_jam.dir/flags.make
-CMakeFiles/192_hour_ui_tool_jam.dir/notes.cpp.o: notes.cpp
+CMakeFiles/192_hour_ui_tool_jam.dir/notes.cpp.o: ../notes.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/192_hour_ui_tool_jam.dir/notes.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/192_hour_ui_tool_jam.dir/notes.cpp.o -c /Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/cmake-build-debug/notes.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/192_hour_ui_tool_jam.dir/notes.cpp.o -c /Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/notes.cpp
 
 CMakeFiles/192_hour_ui_tool_jam.dir/notes.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/192_hour_ui_tool_jam.dir/notes.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/cmake-build-debug/notes.cpp > CMakeFiles/192_hour_ui_tool_jam.dir/notes.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/notes.cpp > CMakeFiles/192_hour_ui_tool_jam.dir/notes.cpp.i
 
 CMakeFiles/192_hour_ui_tool_jam.dir/notes.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/192_hour_ui_tool_jam.dir/notes.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/cmake-build-debug/notes.cpp -o CMakeFiles/192_hour_ui_tool_jam.dir/notes.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/notes.cpp -o CMakeFiles/192_hour_ui_tool_jam.dir/notes.cpp.s
 
 # Object files for target 192_hour_ui_tool_jam
 192_hour_ui_tool_jam_OBJECTS = \
