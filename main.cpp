@@ -14,6 +14,7 @@ int main(int argc, char* argv[]) {
     GtkWidget *grid;
     GtkWidget *label, *space;
     GtkWidget *rspin, *cspin;
+    GtkWidget *sep;
 
     gtk_init(&argc, &argv);
 
@@ -96,6 +97,27 @@ int main(int argc, char* argv[]) {
     g_signal_connect(button, "clicked", G_CALLBACK(tool.delete_event), NULL);
     gtk_grid_attach(GTK_GRID(grid), button, 0, MAINROWCOUNT, 2, 1);
     gtk_widget_show(button);
+
+    /* Space for Formatting */
+    space = gtk_label_new("");
+    gtk_grid_attach(GTK_GRID(grid), space, 3, 0, 1, 1);
+    gtk_widget_show(space);
+
+    /* Vertical Separator */
+    sep = gtk_separator_new(GTK_ORIENTATION_VERTICAL);
+    gtk_grid_attach(GTK_GRID(grid), sep, 4, 0, 1, MAINROWCOUNT + 1);
+    gtk_widget_show(sep);
+
+    /* Space for Formatting */
+    space = gtk_label_new("");
+    gtk_grid_attach(GTK_GRID(grid), space, 5, 0, 1, 1);
+    gtk_widget_show(space);
+
+    /* List of Components */
+    label = gtk_label_new("On-Screen Components");
+    gtk_label_set_xalign(GTK_LABEL(label), 0);
+    gtk_grid_attach(GTK_GRID(grid), label, 6, 0, 1, 1);
+    gtk_widget_show(label);
 
     gtk_widget_show(grid);
     gtk_widget_show(window);
