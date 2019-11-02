@@ -8,7 +8,7 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
     const int MAINROWCOUNT = 10;
-    static int COMPONENTCOUNT = 0;
+    static int  = 0;
     ui_toolkit tool;
     ui_toolkit::PlaygroundDimensions pdimen;
     ui_toolkit::PlaygroundText ptext;

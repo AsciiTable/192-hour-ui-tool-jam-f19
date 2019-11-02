@@ -10,6 +10,12 @@
 #include <gtk/gtk.h>
 using namespace std;
 
+int *COMPONENTCOUNT = 0;
+
+int init_compcount(){
+    *COMPONENTCOUNT = 0;
+}
+
 gboolean ui_toolkit::delete_event(GtkWidget *widget, GdkEvent *event, gpointer data){
     g_print("Program closed.\n");
     gtk_main_quit();

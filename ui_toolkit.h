@@ -8,6 +8,9 @@
 #include <string>
 using namespace std;
 
+extern int *COMPONENTCOUNT;
+extern int init_compcount();
+
 class ui_toolkit {
 public:
     static gboolean delete_event(GtkWidget *widget, GdkEvent *event, gpointer data);
