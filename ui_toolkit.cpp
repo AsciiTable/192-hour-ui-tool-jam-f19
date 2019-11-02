@@ -50,8 +50,11 @@ GtkWidget *ui_toolkit::make_hbox(gboolean homogeneous, gint spacing, gboolean ex
 
     return box;
 }
-void ui_toolkit::callback(GtkWidget *widget, gpointer data){
-    g_print("Hello! %s was pressed\n", (gchar *) data);
+bool ui_toolkit::callback(GtkWidget *widget, gpointer data){
+    g_print("Hello! Callback was called\n");
+    bool *d = (bool*)data;
+    *d = true;
+    return true;
 }
 
 void ui_toolkit::hello(GtkWidget *widget, gpointer data){
@@ -72,11 +75,28 @@ void ui_toolkit::destroy(GtkWidget *widget, gpointer data){
     gtk_main_quit();
 }
 
-GtkWidget *ui_toolkit::make_playground(int r, int c, bool h){
-    GtkWidget *playground;
+GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
+    GtkWidget *space;
+    PlaygroundDimensions *p = (PlaygroundDimensions*)data;
+    p->play = gtk_grid_new();
+    int r = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(p->row));
+    int c = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(p->col));
 
-    playground = gtk_table_new(r, c, h);
-    //gtk_container_add (GTK_CONTAINER (window), playground);
+    for(int i = 0; i < r; i++){
+        space = gtk_label_new("r");
+        gtk_grid_attach(GTK_GRID(p->play), space, 0, i, 1, 1);
+    }
+    for(int i = 0; i < c; i++){
+        space = gtk_label_new("c");
+        gtk_grid_attach(GTK_GRID(p->play), space, i, 0, 1, 1);
+    }
+    cout << r << "x" << c << " playground created." << endl;
 
-    return playground;
+//    GtkWidget *sep;
+//    sep = gtk_separator_new(GTK_ORIENTATION_VERTICAL);
+//    gtk_grid_attach (GTK_GRID (p->grid), sep, 3, 0, 1, 6);
+//    cout << p->row << "x" << p->col << " playground created yes." << endl;
+//    gtk_grid_attach (GTK_GRID (p->grid), p->play, 4, 0, c, r);
+//    cout << p->row << "x" << p->col << " playground created yes yes." << endl;
+    return p->play;
 }
