@@ -7,10 +7,7 @@
 #include <gtk/gtk.h>
 
 class ui_toolkit {
-private:
 public:
-    static GtkWidget *make_hbox(gboolean homogeneous, gint spacing, gboolean expand, gboolean fill, guint padding);
-    static bool callback(GtkWidget *widget, gpointer data);
     static gboolean delete_event(GtkWidget *widget, GdkEvent *event, gpointer data);
     static GtkWidget *make_playground(GtkWidget *widget, gpointer data);
     struct PlaygroundDimensions{
