@@ -79,13 +79,18 @@ GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
     gtk_container_set_border_width(GTK_CONTAINER(p->playwin), 30);
 
     p->play = gtk_grid_new();
+    int rS = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(p->rowSize));
+    int cS = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(p->colSize));
+
+    gtk_grid_set_row_spacing(GTK_GRID(p->play), rS);
+    gtk_grid_set_column_spacing(GTK_GRID(p->play),cS);
 
     int r = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(p->row));
     int c = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(p->col));
 
     for(int i = 0; i < r; i++){
         for(int j = 0; j < c; j++){
-            space = gtk_label_new("new!");
+            space = gtk_label_new("");
             gtk_grid_attach(GTK_GRID(p->play), space, j, i, 1,  1);
             gtk_widget_show(space);
         }
@@ -93,16 +98,8 @@ GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
     cout << r << "x" << c << " playground created." << endl;
     gtk_container_add (GTK_CONTAINER (p->playwin), p->play);
 
-//    GtkWidget *sep;
-//    sep = gtk_separator_new(GTK_ORIENTATION_VERTICAL);
-//    gtk_widget_show(sep);
-//    if(r <= 6)
-//        gtk_grid_attach (GTK_GRID (p->play), sep, 3, 0, 1, 6);
-//    else
-//        gtk_grid_attach (GTK_GRID (p->play), sep, 3, 0, 1, r);
-//    cout << r << "x" << c << " playground created yes." << endl;
-
-    gtk_widget_show(p->playwin);
     gtk_widget_show(p->play);
+    gtk_widget_show(p->playwin);
+
     return p->play;
 }

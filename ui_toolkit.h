@@ -14,7 +14,7 @@ public:
     static gboolean delete_event(GtkWidget *widget, GdkEvent *event, gpointer data);
     static GtkWidget *make_playground(GtkWidget *widget, gpointer data);
     struct PlaygroundDimensions{
-        GtkWidget *row, *col;
+        GtkWidget *row, *col, *rowSize, *colSize;
         GtkWidget *play;
         GtkWidget *playwin;
     };
