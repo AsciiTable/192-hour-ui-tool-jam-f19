@@ -74,7 +74,7 @@ GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
     p->playwin = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(p->playwin), "Playground");
 
-    g_signal_connect(p->playwin, "close-window", G_CALLBACK(gtk_window_close),NULL);
+    g_signal_connect(p->playwin, "delete-event", G_CALLBACK(gtk_window_close),NULL);
 
     gtk_container_set_border_width(GTK_CONTAINER(p->playwin), 30);
 
