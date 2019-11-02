@@ -57,10 +57,6 @@ bool ui_toolkit::callback(GtkWidget *widget, gpointer data){
     return true;
 }
 
-void ui_toolkit::hello(GtkWidget *widget, gpointer data){
-    g_print("Hello World!\n");
-}
-
 gboolean ui_toolkit::delete_event(GtkWidget *widget, GdkEvent *event, gpointer data){
     g_print("Program closed.\n");
     gtk_main_quit();
@@ -71,13 +67,18 @@ gboolean ui_toolkit::delete_event(GtkWidget *widget, GdkEvent *event, gpointer d
     //return TRUE;
 }
 
-void ui_toolkit::destroy(GtkWidget *widget, gpointer data){
-    gtk_main_quit();
-}
-
 GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
     GtkWidget *space;
     PlaygroundDimensions *p = (PlaygroundDimensions*)data;
+
+    p->playwin = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title(GTK_WINDOW(p->playwin), "Playground");
+
+    g_signal_connect(p->playwin, "close-window", G_CALLBACK(gtk_window_close),NULL);
+
+    gtk_container_set_border_width(GTK_CONTAINER(p->playwin), 30);
+
+    p->play = gtk_grid_new();
 
     int r = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(p->row));
     int c = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(p->col));
@@ -85,19 +86,23 @@ GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
     for(int i = 0; i < r; i++){
         for(int j = 0; j < c; j++){
             space = gtk_label_new("new!");
-            gtk_grid_attach(GTK_GRID(p->grid), space, (j+4), i, 1,  1);
+            gtk_grid_attach(GTK_GRID(p->play), space, j, i, 1,  1);
             gtk_widget_show(space);
         }
     }
     cout << r << "x" << c << " playground created." << endl;
+    gtk_container_add (GTK_CONTAINER (p->playwin), p->play);
 
-    GtkWidget *sep;
-    sep = gtk_separator_new(GTK_ORIENTATION_VERTICAL);
-    gtk_widget_show(sep);
-    if(r <= 6)
-        gtk_grid_attach (GTK_GRID (p->grid), sep, 3, 0, 1, 6);
-    else
-        gtk_grid_attach (GTK_GRID (p->grid), sep, 3, 0, 1, r);
-    cout << r << "x" << c << " playground created yes." << endl;
-    return p->grid;
+//    GtkWidget *sep;
+//    sep = gtk_separator_new(GTK_ORIENTATION_VERTICAL);
+//    gtk_widget_show(sep);
+//    if(r <= 6)
+//        gtk_grid_attach (GTK_GRID (p->play), sep, 3, 0, 1, 6);
+//    else
+//        gtk_grid_attach (GTK_GRID (p->play), sep, 3, 0, 1, r);
+//    cout << r << "x" << c << " playground created yes." << endl;
+
+    gtk_widget_show(p->playwin);
+    gtk_widget_show(p->play);
+    return p->play;
 }

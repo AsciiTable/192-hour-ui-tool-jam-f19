@@ -18,6 +18,18 @@ gtk/gtk.h
 ui_toolkit.h
 /Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/ui_toolkit.h
 
+/Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/ui_toolkit.cpp
+ui_toolkit.h
+/Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/ui_toolkit.h
+iostream
+-
+stdio.h
+-
+stdlib.h
+-
+gtk/gtk.h
+-
+
 /Users/jessica_wei/Desktop/Repositories/192-hour-ui-tool-jam/ui_toolkit.h
 gtk/gtk.h
 -

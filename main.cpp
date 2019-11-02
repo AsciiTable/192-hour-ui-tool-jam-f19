@@ -19,6 +19,7 @@ int main(int argc, char* argv[]) {
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
     gtk_window_set_title(GTK_WINDOW(window), "UI Toolkit");
+    gtk_window_set_resizable(GTK_WINDOW(window), false);
 
     g_signal_connect(window, "delete-event", G_CALLBACK(tool.delete_event),NULL);
 
@@ -29,7 +30,6 @@ int main(int argc, char* argv[]) {
     gtk_grid_set_column_spacing(GTK_GRID(grid),10);
     /* Puts the table in the main window */
     gtk_container_add (GTK_CONTAINER (window), grid);
-    pdimen.grid = grid;
 
     /* Row Spin Button */
     label = gtk_label_new("Row: ");
