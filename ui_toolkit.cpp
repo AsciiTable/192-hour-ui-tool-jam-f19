@@ -62,7 +62,7 @@ void ui_toolkit::hello(GtkWidget *widget, gpointer data){
 }
 
 gboolean ui_toolkit::delete_event(GtkWidget *widget, GdkEvent *event, gpointer data){
-    g_print("delete event occurred\n");
+    g_print("Program closed.\n");
     gtk_main_quit();
 
     /* Return FALSE to let GTK emit the "destroy" signal */
@@ -78,19 +78,16 @@ void ui_toolkit::destroy(GtkWidget *widget, gpointer data){
 GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
     GtkWidget *space;
     PlaygroundDimensions *p = (PlaygroundDimensions*)data;
-    p->play = gtk_grid_new();
+
     int r = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(p->row));
     int c = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(p->col));
 
     for(int i = 0; i < r; i++){
-        space = gtk_label_new("r");
-        gtk_grid_attach(GTK_GRID(p->play), space, 0, i, 1, 1);
-        gtk_widget_show(space);
-    }
-    for(int i = 0; i < c; i++){
-        space = gtk_label_new("c");
-        gtk_grid_attach(GTK_GRID(p->play), space, i, 0, 1, 1);
-        gtk_widget_show(space);
+        for(int j = 0; j < c; j++){
+            space = gtk_label_new("new!");
+            gtk_grid_attach(GTK_GRID(p->grid), space, (j+4), i, 1,  1);
+            gtk_widget_show(space);
+        }
     }
     cout << r << "x" << c << " playground created." << endl;
 
@@ -102,8 +99,5 @@ GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
     else
         gtk_grid_attach (GTK_GRID (p->grid), sep, 3, 0, 1, r);
     cout << r << "x" << c << " playground created yes." << endl;
-    gtk_grid_attach (GTK_GRID (p->grid), p->play, 4, 0, c, r);
-    cout << r << "x" << c << " playground created yes yes." << endl;
-    gtk_widget_show(p->grid);
-    return p->play;
+    return p->grid;
 }
