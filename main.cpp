@@ -30,13 +30,15 @@ int main(int argc, char* argv[]) {
 
     g_signal_connect(window, "delete-event", G_CALLBACK(tool.delete_event),NULL);
 
-    gtk_container_set_border_width(GTK_CONTAINER(window), 30);
+    gtk_container_set_border_width(GTK_CONTAINER(window), 20);
 
     grid = gtk_grid_new();
     gtk_grid_set_row_spacing(GTK_GRID(grid),5);
     gtk_grid_set_column_spacing(GTK_GRID(grid),15);
     /* Puts the table in the main window */
     gtk_container_add (GTK_CONTAINER (window), grid);
+
+    ptext.mainwin = grid;
 
     /* Option Section Header */
     label = gtk_label_new("Configurations");
@@ -60,6 +62,7 @@ int main(int argc, char* argv[]) {
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(rspin), true);
     gtk_widget_show(rspin);
     pdimen.row = rspin;
+    ptext.maxRow = rspin;
 
     /* Row Space Spin Button */
     label = gtk_label_new("Row Space: ");
@@ -84,6 +87,7 @@ int main(int argc, char* argv[]) {
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(cspin), true);
     gtk_widget_show(cspin);
     pdimen.col = cspin;
+    ptext.maxCol = cspin;
 
     /* Column Space Spin Button */
     label = gtk_label_new("Column Space: ");

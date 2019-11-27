@@ -68,39 +68,79 @@ GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
 
 GtkWidget *ui_toolkit::make_text(GtkWidget *widget, gpointer data){
     PlaygroundText *t = (PlaygroundText*)data;
-    GtkWidget *popupWindow;
-    GtkWidget *popupGrid;
-    GtkWidget *textLabel;
+    GtkWidget *label, *button;
 
     // Create Text Manager Popup
-    popupWindow = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_title(GTK_WINDOW(popupWindow), "Configure Textbox");
-    gtk_window_set_resizable(GTK_WINDOW(popupWindow), false);
-    gtk_container_set_border_width(GTK_CONTAINER(popupWindow), 30);
-    popupGrid = gtk_grid_new();
-    gtk_grid_set_row_spacing(GTK_GRID(popupGrid),5);
-    gtk_grid_set_column_spacing(GTK_GRID(popupGrid),15);
-    gtk_container_add (GTK_CONTAINER (popupWindow), popupGrid);
+    t->configwin = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title(GTK_WINDOW(t->configwin), "Configure Textbox");
+    gtk_window_set_resizable(GTK_WINDOW(t->configwin), false);
+    gtk_container_set_border_width(GTK_CONTAINER(t->configwin), 20);
+    t->configgrid = gtk_grid_new();
+    gtk_grid_set_row_spacing(GTK_GRID(t->configgrid),5);
+    gtk_grid_set_column_spacing(GTK_GRID(t->configgrid),15);
+    gtk_container_add (GTK_CONTAINER (t->configwin), t->configgrid);
 
-    /* Option Section Header */
-    textLabel = gtk_label_new("Text");
-    gtk_label_set_xalign(GTK_LABEL(textLabel), 0);
-    gtk_grid_attach(GTK_GRID(popupGrid), textLabel, 0, 0, 1, 1);
-    gtk_widget_show(textLabel);
-    // Text Free Response
-    GtkWidget *textEntry;
-    textEntry = gtk_entry_new();
-    gtk_grid_attach(GTK_GRID(popupGrid), textEntry, 0, 1, 1, 1);
-    gtk_widget_show(textEntry);
+    /* Entry (Textbox) */
+    label = gtk_label_new("Text");
+    gtk_label_set_xalign(GTK_LABEL(label), 0);
+    gtk_grid_attach(GTK_GRID(t->configgrid), label, 0, 0, 1, 1);
+    gtk_widget_show(label);
 
-    // Position x dropdown
-    // Position y dropdown
-    // Add & Close Window Button
-    gtk_widget_show(popupGrid);
-    gtk_widget_show(popupWindow);
-    // Add new Text manager to On-Screen Components
+    t->userText = gtk_entry_new();
+    gtk_grid_attach(GTK_GRID(t->configgrid), t->userText, 1, 0, 1, 1);
+    gtk_widget_show(t->userText);
+
+    int rMax = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(t->maxRow));
+    int cMax = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(t->maxCol));
+
+    /* Row Scroll */
+    label = gtk_label_new("Row Position");
+    gtk_label_set_xalign(GTK_LABEL(label), 0);
+    gtk_grid_attach(GTK_GRID(t->configgrid), label, 0, 2, 1, 1);
+    gtk_widget_show(label);
+
+    t->posRow = gtk_spin_button_new_with_range(0, rMax, 1);
+    gtk_grid_attach(GTK_GRID(t->configgrid), t->posRow, 1, 2, 1, 1);
+    gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(t->posRow), true);
+    gtk_widget_show(t->posRow);
+
+    /* Column Scroll */
+    label = gtk_label_new("Column Position");
+    gtk_label_set_xalign(GTK_LABEL(label), 0);
+    gtk_grid_attach(GTK_GRID(t->configgrid), label, 0, 3, 1, 1);
+    gtk_widget_show(label);
+
+    t->posCol = gtk_spin_button_new_with_range(0, cMax, 1);
+    gtk_grid_attach(GTK_GRID(t->configgrid), t->posCol, 1, 3, 1, 1);
+    gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(t->posCol), true);
+    gtk_widget_show(t->posCol);
+
+    /* Space */
+    t->configspace = gtk_label_new("");
+    gtk_grid_attach(GTK_GRID(t->configgrid), t->configspace, 0, 4, 2, 1);
+    gtk_widget_show(t->configspace);
+
+    /* Add & Close Window Button */
+    button = gtk_button_new_with_label ("Create Text");
+    ///g_signal_connect (button, "clicked",G_CALLBACK (tool.make_text), &ptext);
+    gtk_grid_attach(GTK_GRID(t->configgrid), button, 0, 5, 2, 1);
+    gtk_widget_show (button);
+
+    /* Show everything and save values*/
+    gtk_widget_show(t->configgrid);
+    gtk_widget_show(t->configwin);
+    t->rp = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(t->posRow)) - 1;
+    t->cp = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(t->posCol)) - 1;
+    t->txtstr = gtk_entry_get_text(GTK_ENTRY(t->userText));
+    //gtk_grid_attach(GTK_GRID(t->mainwin), label, 6, 1, 1, 1);
+
+    // Add new Text manager to On-Screen Components w/ Remove Button
     cout << "Textbox making in progress!\n";
     return t->textbox;
+}
+
+GtkWidget *ui_toolkit::attach_text(GtkWidget *widget, gpointer data){
+
 }
 
 GtkWidget *ui_toolkit::make_button(GtkWidget *widget, gpointer data){

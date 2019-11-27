@@ -17,6 +17,7 @@ public:
     static GtkWidget *make_playground(GtkWidget *widget, gpointer data);
     static GtkWidget *make_text(GtkWidget *widget, gpointer data);
     static GtkWidget *make_button(GtkWidget *widget, gpointer data);
+    static GtkWidget *attach_text(GtkWidget *widget, gpointer data);
     struct PlaygroundDimensions{
         GtkWidget *row, *col, *rowSize, *colSize, *borSize;
         GtkWidget *play;
@@ -25,11 +26,11 @@ public:
     struct PlaygroundText{
         GtkWidget *textbox;
         GtkWidget *userText;
-        GtkWidget *posRow, *posCol;
+        GtkWidget *posRow, *posCol, *maxRow, *maxCol;
         GtkWidget *play;
-        GtkWidget *playwin, *configwin, *mainwin;
-        string compString;
-        gint compCount;
+        GtkWidget *playwin, *configwin, *mainwin, *configgrid, *configspace;
+        string compString, txtstr;
+        gint compCount, rp, cp;
     };
     struct PlaygroundButton{
         GtkWidget *button;
