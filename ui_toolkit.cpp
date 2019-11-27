@@ -51,7 +51,7 @@ GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
 
     for(int i = 0; i < r; i++){
         for(int j = 0; j < c; j++){
-            space = gtk_label_new("");
+            space = gtk_label_new("__|");
             gtk_grid_attach(GTK_GRID(p->play), space, j, i, 1,  1);
             gtk_widget_show(space);
         }
@@ -66,7 +66,13 @@ GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
 }
 
 GtkWidget *ui_toolkit::make_text(GtkWidget *widget, gpointer data){
+
     PlaygroundText *t = (PlaygroundText*)data;
+    // Create Text Manager
+    // Text Free Response
+    // Position x dropdown
+    // Position y dropdown
+    // Add new Text manager to On-Screen Components
     cout << "Textbox making in progress!\n";
     return t->textbox;
 }

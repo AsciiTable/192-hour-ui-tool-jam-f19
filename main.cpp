@@ -146,6 +146,7 @@ int main(int argc, char* argv[]) {
     gtk_widget_show(space);
 
     /* List of Components */
+    // Do something to allow for scrolling if On-Screen Components gets too long
     label = gtk_label_new("On-Screen Components");
     gtk_label_set_xalign(GTK_LABEL(label), 0);
     gtk_grid_attach(GTK_GRID(grid), label, 6, 0, 1, 1);
