@@ -38,7 +38,8 @@ int main(int argc, char* argv[]) {
     /* Puts the table in the main window */
     gtk_container_add (GTK_CONTAINER (window), grid);
 
-    ptext.mainwin = grid;
+    ptext.mainwin = window;
+    ptext.maingrid = grid;
 
     /* Option Section Header */
     label = gtk_label_new("Configurations");
