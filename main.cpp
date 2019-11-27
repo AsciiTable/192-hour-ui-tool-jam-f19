@@ -7,7 +7,7 @@
 using namespace std;
 
 int main(int argc, char* argv[]) {
-    const int MAINROWCOUNT = 10;
+    const int MAINROWCOUNT = 11;
     //static int  = 0;
     ui_toolkit tool;
     ui_toolkit::PlaygroundDimensions pdimen;
@@ -18,6 +18,7 @@ int main(int argc, char* argv[]) {
     GtkWidget *grid;
     GtkWidget *label, *space;
     GtkWidget *rspin, *cspin;
+    GtkWidget *bspin;
     GtkWidget *sep;
 
     gtk_init(&argc, &argv);
@@ -51,11 +52,11 @@ int main(int argc, char* argv[]) {
     /* Row Spin Button */
     label = gtk_label_new("Row: ");
     gtk_label_set_xalign(GTK_LABEL(label), 0);
-    gtk_grid_attach(GTK_GRID(grid), label, 0, MAINROWCOUNT-8, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), label, 0, MAINROWCOUNT-9, 1, 1);
     gtk_widget_show(label);
 
     rspin = gtk_spin_button_new_with_range(1, 10, 1);
-    gtk_grid_attach(GTK_GRID(grid), rspin, 1, MAINROWCOUNT-8, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), rspin, 1, MAINROWCOUNT-9, 1, 1);
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(rspin), true);
     gtk_widget_show(rspin);
     pdimen.row = rspin;
@@ -63,11 +64,11 @@ int main(int argc, char* argv[]) {
     /* Row Space Spin Button */
     label = gtk_label_new("Row Space: ");
     gtk_label_set_xalign(GTK_LABEL(label), 0);
-    gtk_grid_attach(GTK_GRID(grid), label, 0, MAINROWCOUNT-7, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), label, 0, MAINROWCOUNT-8, 1, 1);
     gtk_widget_show(label);
 
     rspin = gtk_spin_button_new_with_range(5, 100, 1);
-    gtk_grid_attach(GTK_GRID(grid), rspin, 1, MAINROWCOUNT-7, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), rspin, 1, MAINROWCOUNT-8, 1, 1);
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(rspin), true);
     gtk_widget_show(rspin);
     pdimen.rowSize = rspin;
@@ -75,11 +76,11 @@ int main(int argc, char* argv[]) {
     /* Column Spin Button */
     label = gtk_label_new("Column: ");
     gtk_label_set_xalign(GTK_LABEL(label), 0);
-    gtk_grid_attach(GTK_GRID(grid), label, 0, MAINROWCOUNT-6, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), label, 0, MAINROWCOUNT-7, 1, 1);
     gtk_widget_show(label);
 
     cspin = gtk_spin_button_new_with_range(1, 10, 1);
-    gtk_grid_attach(GTK_GRID(grid), cspin, 1, MAINROWCOUNT-6, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), cspin, 1, MAINROWCOUNT-7, 1, 1);
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(cspin), true);
     gtk_widget_show(cspin);
     pdimen.col = cspin;
@@ -87,14 +88,26 @@ int main(int argc, char* argv[]) {
     /* Column Space Spin Button */
     label = gtk_label_new("Column Space: ");
     gtk_label_set_xalign(GTK_LABEL(label), 0);
-    gtk_grid_attach(GTK_GRID(grid), label, 0, MAINROWCOUNT-5, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), label, 0, MAINROWCOUNT-6, 1, 1);
     gtk_widget_show(label);
 
     cspin = gtk_spin_button_new_with_range(5, 100, 1);
-    gtk_grid_attach(GTK_GRID(grid), cspin, 1, MAINROWCOUNT-5, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), cspin, 1, MAINROWCOUNT-6, 1, 1);
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(cspin), true);
     gtk_widget_show(cspin);
     pdimen.colSize = cspin;
+
+    /* Border Width Spin Button */
+    label = gtk_label_new("Border Width: ");
+    gtk_label_set_xalign(GTK_LABEL(label), 0);
+    gtk_grid_attach(GTK_GRID(grid), label, 0, MAINROWCOUNT-5, 1, 1);
+    gtk_widget_show(label);
+
+    bspin = gtk_spin_button_new_with_range(0, 250, 5);
+    gtk_grid_attach(GTK_GRID(grid), bspin, 1, MAINROWCOUNT-5, 1, 1);
+    gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(bspin), true);
+    gtk_widget_show(bspin);
+    pdimen.borSize = bspin;
 
     /* Space for Formatting */
     space = gtk_label_new("");
@@ -103,6 +116,7 @@ int main(int argc, char* argv[]) {
 
     /* Create Textbox Button */
     button = gtk_button_new_with_label ("Create Text");
+
     g_signal_connect (button, "clicked",G_CALLBACK (tool.make_text), &ptext);
     gtk_grid_attach(GTK_GRID(grid), button, 0, MAINROWCOUNT-3, 1, 1);
     gtk_widget_show (button);

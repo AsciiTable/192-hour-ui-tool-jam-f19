@@ -18,7 +18,7 @@ public:
     static GtkWidget *make_text(GtkWidget *widget, gpointer data);
     static GtkWidget *make_button(GtkWidget *widget, gpointer data);
     struct PlaygroundDimensions{
-        GtkWidget *row, *col, *rowSize, *colSize;
+        GtkWidget *row, *col, *rowSize, *colSize, *borSize;
         GtkWidget *play;
         GtkWidget *playwin;
     };

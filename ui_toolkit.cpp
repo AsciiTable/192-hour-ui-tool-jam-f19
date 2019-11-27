@@ -37,7 +37,8 @@ GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
 
     g_signal_connect(p->playwin, "delete-event", G_CALLBACK(gtk_window_close),NULL);
 
-    gtk_container_set_border_width(GTK_CONTAINER(p->playwin), 30);
+    int b = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(p->borSize));
+    gtk_container_set_border_width(GTK_CONTAINER(p->playwin), b);
 
     p->play = gtk_grid_new();
     int rS = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(p->rowSize));
@@ -66,12 +67,37 @@ GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
 }
 
 GtkWidget *ui_toolkit::make_text(GtkWidget *widget, gpointer data){
-
     PlaygroundText *t = (PlaygroundText*)data;
-    // Create Text Manager
+    GtkWidget *popupWindow;
+    GtkWidget *popupGrid;
+    GtkWidget *textLabel;
+
+    // Create Text Manager Popup
+    popupWindow = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title(GTK_WINDOW(popupWindow), "Configure Textbox");
+    gtk_window_set_resizable(GTK_WINDOW(popupWindow), false);
+    gtk_container_set_border_width(GTK_CONTAINER(popupWindow), 30);
+    popupGrid = gtk_grid_new();
+    gtk_grid_set_row_spacing(GTK_GRID(popupGrid),5);
+    gtk_grid_set_column_spacing(GTK_GRID(popupGrid),15);
+    gtk_container_add (GTK_CONTAINER (popupWindow), popupGrid);
+
+    /* Option Section Header */
+    textLabel = gtk_label_new("Text");
+    gtk_label_set_xalign(GTK_LABEL(textLabel), 0);
+    gtk_grid_attach(GTK_GRID(popupGrid), textLabel, 0, 0, 1, 1);
+    gtk_widget_show(textLabel);
     // Text Free Response
+    GtkWidget *textEntry;
+    textEntry = gtk_entry_new();
+    gtk_grid_attach(GTK_GRID(popupGrid), textEntry, 0, 1, 1, 1);
+    gtk_widget_show(textEntry);
+
     // Position x dropdown
     // Position y dropdown
+    // Add & Close Window Button
+    gtk_widget_show(popupGrid);
+    gtk_widget_show(popupWindow);
     // Add new Text manager to On-Screen Components
     cout << "Textbox making in progress!\n";
     return t->textbox;
