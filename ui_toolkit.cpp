@@ -148,6 +148,9 @@ GtkWidget *ui_toolkit::attach_text(GtkWidget *widget, gpointer data){
     PlaygroundText* t = (PlaygroundText*) data;
     int r = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(t->posRow));
     cout << "SHOULD BE OKAY" << r << "\n";
+    GtkWidget *label = gtk_label_new("TESTBUTTON");
+    gtk_grid_attach(GTK_GRID(t->maingrid), label, 6, 1, 1, 1);
+    gtk_widget_show(label);
     return widget;
 }
 
