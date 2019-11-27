@@ -12,6 +12,7 @@ int main(int argc, char* argv[]) {
     ui_toolkit tool;
     ui_toolkit::PlaygroundDimensions pdimen;
     ui_toolkit::PlaygroundText ptext;
+    ui_toolkit::PlaygroundText* ptextp = &ptext;
     ui_toolkit::PlaygroundButton pbutton;
     GtkWidget *window;
     GtkWidget *button;
@@ -122,7 +123,8 @@ int main(int argc, char* argv[]) {
     /* Create Textbox Button */
     button = gtk_button_new_with_label ("Create Text");
 
-    g_signal_connect (button, "clicked",G_CALLBACK (tool.make_text), &ptext);
+
+    g_signal_connect (button, "clicked",G_CALLBACK (tool.make_text), ptextp);
     gtk_grid_attach(GTK_GRID(grid), button, 0, MAINROWCOUNT-3, 1, 1);
     gtk_widget_show (button);
 

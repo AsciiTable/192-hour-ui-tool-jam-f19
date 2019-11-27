@@ -67,29 +67,33 @@ GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
 }
 
 GtkWidget *ui_toolkit::make_text(GtkWidget *widget, gpointer data){
-    PlaygroundText *t = (PlaygroundText*)data;
+    PlaygroundText* t = (PlaygroundText*) data;
     GtkWidget *label, *button;
 
+    cout << t->rp << " LOOK HERE\n";
+    t->rp = 8;
+    cout << t->rp << " LOOK HERE\n";
+
     // Create Text Manager Popup
-    GtkWidget *configwin = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_title(GTK_WINDOW(configwin), "Configure Textbox");
-    gtk_window_set_resizable(GTK_WINDOW(configwin), false);
-    gtk_container_set_border_width(GTK_CONTAINER(configwin), 20);
-    GtkWidget *configgrid = gtk_grid_new();
-    gtk_grid_set_row_spacing(GTK_GRID(configgrid),5);
-    gtk_grid_set_column_spacing(GTK_GRID(configgrid),15);
-    gtk_container_add (GTK_CONTAINER (configwin), configgrid);
+    t->configwin = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title(GTK_WINDOW(t->configwin), "Configure Textbox");
+    gtk_window_set_resizable(GTK_WINDOW(t->configwin), false);
+    gtk_container_set_border_width(GTK_CONTAINER(t->configwin), 20);
+    t->configgrid = gtk_grid_new();
+    gtk_grid_set_row_spacing(GTK_GRID(t->configgrid),5);
+    gtk_grid_set_column_spacing(GTK_GRID(t->configgrid),15);
+    gtk_container_add (GTK_CONTAINER (t->configwin), t->configgrid);
 
 
     /* Entry (Textbox) */
     label = gtk_label_new("Text");
     gtk_label_set_xalign(GTK_LABEL(label), 0);
-    gtk_grid_attach(GTK_GRID(configgrid), label, 0, 0, 1, 1);
+    gtk_grid_attach(GTK_GRID(t->configgrid), label, 0, 0, 1, 1);
     gtk_widget_show(label);
 
-    GtkWidget *userText = gtk_entry_new();
-    gtk_grid_attach(GTK_GRID(configgrid), userText, 1, 0, 1, 1);
-    gtk_widget_show(userText);
+    t->userText = gtk_entry_new();
+    gtk_grid_attach(GTK_GRID(t->configgrid), t->userText, 1, 0, 1, 1);
+    gtk_widget_show(t->userText);
 
     int rMax = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(t->maxRow));
     int cMax = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(t->maxCol));
@@ -97,72 +101,54 @@ GtkWidget *ui_toolkit::make_text(GtkWidget *widget, gpointer data){
     /* Row Scroll */
     label = gtk_label_new("Row Position");
     gtk_label_set_xalign(GTK_LABEL(label), 0);
-    gtk_grid_attach(GTK_GRID(configgrid), label, 0, 2, 1, 1);
+    gtk_grid_attach(GTK_GRID(t->configgrid), label, 0, 2, 1, 1);
     gtk_widget_show(label);
 
-    GtkWidget *posRow = gtk_spin_button_new_with_range(0, rMax, 1);
-    gtk_grid_attach(GTK_GRID(configgrid), posRow, 1, 2, 1, 1);
-    gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(posRow), true);
-    gtk_widget_show(posRow);
-    gint rp = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(posRow))-1;
+    t->posRow = gtk_spin_button_new_with_range(0, rMax, 1);
+    gtk_grid_attach(GTK_GRID(t->configgrid), t->posRow, 1, 2, 1, 1);
+    gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(t->posRow), true);
+    gtk_widget_show(t->posRow);
+    t->rp = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(t->posRow))-1;
 
     /* Column Scroll */
     label = gtk_label_new("Column Position");
     gtk_label_set_xalign(GTK_LABEL(label), 0);
-    gtk_grid_attach(GTK_GRID(configgrid), label, 0, 3, 1, 1);
+    gtk_grid_attach(GTK_GRID(t->configgrid), label, 0, 3, 1, 1);
     gtk_widget_show(label);
 
-    GtkWidget *posCol = gtk_spin_button_new_with_range(0, cMax, 1);
-    gtk_grid_attach(GTK_GRID(configgrid), posCol, 1, 3, 1, 1);
-    gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(posCol), true);
-    gtk_widget_show(posCol);
-    gint cp = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(posCol)) - 1;
+    t->posCol = gtk_spin_button_new_with_range(0, cMax, 1);
+    gtk_grid_attach(GTK_GRID(t->configgrid), t->posCol, 1, 3, 1, 1);
+    gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(t->posCol), true);
+    gtk_widget_show(t->posCol);
+    t->cp = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(t->posCol)) - 1;
 
     /* Space */
-    GtkWidget *configspace = gtk_label_new("");
-    gtk_grid_attach(GTK_GRID(configgrid), configspace, 0, 4, 2, 1);
-    gtk_widget_show(configspace);
+    t->configspace = gtk_label_new("");
+    gtk_grid_attach(GTK_GRID(t->configgrid), t->configspace, 0, 4, 2, 1);
+    gtk_widget_show(t->configspace);
 
-    cout << "RP BEFORE ATTACH: " << rp;
     /* Add & Close Window Button */
     button = gtk_button_new_with_label ("Create Text");
-    g_signal_connect (button, "clicked",G_CALLBACK (attach_text), &t);
-    gtk_grid_attach(GTK_GRID(configgrid), button, 0, 5, 2, 1);
+    g_signal_connect (button, "clicked",G_CALLBACK (attach_text), data);
+    gtk_grid_attach(GTK_GRID(t->configgrid), button, 0, 5, 2, 1);
     gtk_widget_show (button);
 
     /* Show everything and save values*/
-    gtk_widget_show(configgrid);
-    gtk_widget_show(configwin);
-
-
+    gtk_widget_show(t->configgrid);
+    gtk_widget_show(t->configwin);
 
     //gtk_grid_attach(GTK_GRID(t->maingrid), label, 6, 1, 1, 1);
 
     // Add new Text manager to On-Screen Components w/ Remove Button
     cout << "Textbox making in progress!\n";
-    return userText;
+    return t->userText;
 }
 
 GtkWidget *ui_toolkit::attach_text(GtkWidget *widget, gpointer data){
-    PlaygroundText *t = (PlaygroundText*)data;
-    //t->txtstr = gtk_entry_get_text(GTK_ENTRY(t->userText));
-    cout << "TXTSTR: " << t->txtstr<<"\n";
-    //gtk_grid_attach(GTK_GRID(t->maingrid), t->posCol, 6, 1, 1, 1);
-    if(t->maingrid != NULL)
-        cout << "Grid is something...\n";
-
-    if(t->mainwin != NULL)
-        cout << "Main Win is something...\n";
-
-    if(t->configwin != NULL)
-        cout << "Window is something...\n";
-    else
-        cout << "Try again CONFIG WIN HAHAHA\n";
-
-    cout << "Checking data... " << t->rp << "\n";
-
-    cout << "Made Textbox\n";
-    return t->textbox;
+    PlaygroundText* t = (PlaygroundText*) data;
+    int r = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(t->posRow));
+    cout << "SHOULD BE OKAY" << r << "\n";
+    return widget;
 }
 
 GtkWidget *ui_toolkit::make_button(GtkWidget *widget, gpointer data){

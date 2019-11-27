@@ -18,8 +18,6 @@ public:
     static GtkWidget *make_text(GtkWidget *widget, gpointer data);
     static GtkWidget *make_button(GtkWidget *widget, gpointer data);
     static GtkWidget *attach_text(GtkWidget *widget, gpointer data);
-    static GtkWidget *mainwin;
-    static GtkWidget *maingrid;
     static gint compCount;
 
     struct PlaygroundDimensions{
