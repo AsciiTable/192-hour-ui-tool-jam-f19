@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
     gtk_container_set_border_width(GTK_CONTAINER(window), 20);
 
     grid = gtk_grid_new();
-    gtk_grid_set_row_spacing(GTK_GRID(grid),40);
+    gtk_grid_set_row_spacing(GTK_GRID(grid),15);
     gtk_grid_set_column_spacing(GTK_GRID(grid),15);
     /* Puts the table in the main window */
     gtk_container_add (GTK_CONTAINER (window), grid);
@@ -107,46 +107,31 @@ int main(int argc, char* argv[]) {
     gtk_widget_show(bspin);
     pdimen.borSize = bspin;
 
-    /* Space for Formatting */
-//    space = gtk_label_new("");
-//    gtk_grid_attach(GTK_GRID(grid), space, 0, 6, 2, 1);
-//    gtk_widget_show(space);
-
     /* Create Textbox Button */
     button = gtk_button_new_with_label ("Create Text");
 
 
     g_signal_connect (button, "clicked",G_CALLBACK (tool.make_text), ptextp);
-    gtk_grid_attach(GTK_GRID(grid), button, 0, 7, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), button, 0, 6, 1, 1);
     gtk_widget_show (button);
 
     /* Create Button Button */
     button = gtk_button_new_with_label ("Create Button");
     g_signal_connect (button, "clicked",G_CALLBACK (tool.make_button), &pbutton);
-    gtk_grid_attach(GTK_GRID(grid), button, 1, 7, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), button, 1, 6, 1, 1);
     gtk_widget_show (button);
-
-    /* Space for Formatting */
-    space = gtk_label_new("");
-    gtk_grid_attach(GTK_GRID(grid), space, 0, 8, 2, 1);
-    gtk_widget_show(space);
 
     /* Create Playground Button */
     button = gtk_button_new_with_label ("Create Playground");
     g_signal_connect (button, "clicked",G_CALLBACK (tool.make_playground), &pdimen);
-    gtk_grid_attach(GTK_GRID(grid), button, 0, 8, 2, 1);
+    gtk_grid_attach(GTK_GRID(grid), button, 0, 7, 2, 1);
     gtk_widget_show (button);
 
     /* Quit Button */
     button = gtk_button_new_with_label("Quit");
     g_signal_connect(button, "clicked", G_CALLBACK(tool.delete_event), NULL);
-    gtk_grid_attach(GTK_GRID(grid), button, 0, 9, 2, 1);
+    gtk_grid_attach(GTK_GRID(grid), button, 0, 8, 2, 1);
     gtk_widget_show(button);
-
-    /* Space for Formatting */
-    space = gtk_label_new("");
-    gtk_grid_attach(GTK_GRID(grid), space, 3, 0, 1, 1);
-    gtk_widget_show(space);
 
     /* Vertical Separator */
     sep = gtk_separator_new(GTK_ORIENTATION_VERTICAL);

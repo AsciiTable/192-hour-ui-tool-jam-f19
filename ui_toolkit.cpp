@@ -8,12 +8,19 @@
 #include <stdlib.h>
 #include <string>
 #include <gtk/gtk.h>
+#include <vector>
 using namespace std;
 
 int compInc(){
     static int count = 0;
     count++;
     return count;
+}
+
+void addText(string txt, gint rpos, gint cpos){
+    static vector<GtkWidget*> txtList;
+    GtkWidget *l = gtk_label_new(txt.c_str());
+    txtList.push_back(l);
 }
 
 gboolean ui_toolkit::delete_event(GtkWidget *widget, GdkEvent *event, gpointer data){
