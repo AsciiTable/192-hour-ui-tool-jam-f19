@@ -10,10 +10,10 @@
 #include <gtk/gtk.h>
 using namespace std;
 
-int *COMPONENTCOUNT = 0;
-
-int init_compcount(){
-    *COMPONENTCOUNT = 0;
+int compInc(){
+    static int count = 0;
+    count++;
+    return count;
 }
 
 gboolean ui_toolkit::delete_event(GtkWidget *widget, GdkEvent *event, gpointer data){
@@ -69,10 +69,6 @@ GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
 GtkWidget *ui_toolkit::make_text(GtkWidget *widget, gpointer data){
     PlaygroundText* t = (PlaygroundText*) data;
     GtkWidget *label, *button;
-
-    cout << t->rp << " LOOK HERE\n";
-    t->rp = 8;
-    cout << t->rp << " LOOK HERE\n";
 
     // Create Text Manager Popup
     t->configwin = gtk_window_new(GTK_WINDOW_TOPLEVEL);
@@ -137,8 +133,6 @@ GtkWidget *ui_toolkit::make_text(GtkWidget *widget, gpointer data){
     gtk_widget_show(t->configgrid);
     gtk_widget_show(t->configwin);
 
-    //gtk_grid_attach(GTK_GRID(t->maingrid), label, 6, 1, 1, 1);
-
     // Add new Text manager to On-Screen Components w/ Remove Button
     cout << "Textbox making in progress!\n";
     return t->userText;
@@ -147,10 +141,21 @@ GtkWidget *ui_toolkit::make_text(GtkWidget *widget, gpointer data){
 GtkWidget *ui_toolkit::attach_text(GtkWidget *widget, gpointer data){
     PlaygroundText* t = (PlaygroundText*) data;
     int r = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(t->posRow));
-    cout << "SHOULD BE OKAY" << r << "\n";
-    GtkWidget *label = gtk_label_new("TESTBUTTON");
-    gtk_grid_attach(GTK_GRID(t->maingrid), label, 6, 1, 1, 1);
+    int c = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(t->posCol));
+    string str = gtk_entry_get_text(GTK_ENTRY(t->userText));
+    string lab = "Textbox: "+str+" @ " + to_string(r) + ", " + to_string(c);
+    GtkWidget *label = gtk_label_new(lab.c_str());
+    int co = compInc();
+    cout << "Comp Count: " << co << "\n";
+    gtk_grid_attach(GTK_GRID(t->maingrid), label, 6, co, 1, 1);
     gtk_widget_show(label);
+
+    // Remove Button
+    GtkWidget *button = gtk_button_new_with_label("Remove");
+    gtk_grid_attach(GTK_GRID(t->maingrid), button, 7, co, 1, 1);
+    gtk_widget_show(button);
+    gtk_widget_destroy(t->configwin);
+
     return widget;
 }
 

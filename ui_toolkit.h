@@ -8,9 +8,6 @@
 #include <string>
 using namespace std;
 
-extern int *COMPONENTCOUNT;
-extern int init_compcount();
-
 class ui_toolkit {
 public:
     static gboolean delete_event(GtkWidget *widget, GdkEvent *event, gpointer data);
@@ -18,7 +15,6 @@ public:
     static GtkWidget *make_text(GtkWidget *widget, gpointer data);
     static GtkWidget *make_button(GtkWidget *widget, gpointer data);
     static GtkWidget *attach_text(GtkWidget *widget, gpointer data);
-    static gint compCount;
 
     struct PlaygroundDimensions{
         GtkWidget *row, *col, *rowSize, *colSize, *borSize;
