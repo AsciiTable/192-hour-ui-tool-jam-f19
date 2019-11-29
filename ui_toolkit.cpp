@@ -19,8 +19,8 @@ int compInc(){
 }
 
 static vector<Custom*> txtList;
-void addComp(string txt, int rpos, int cpos){
-    Custom* c = new Custom(txt, rpos, cpos);
+void addComp(string type, string txt, int rpos, int cpos){
+    Custom* c = new Custom(type, txt, rpos, cpos);
     txtList.push_back(c);
 }
 
@@ -176,7 +176,7 @@ GtkWidget *ui_toolkit::attach_text(GtkWidget *widget, gpointer data){
     gtk_grid_attach(GTK_GRID(t->maingrid), label, 6, co, 1, 1);
     gtk_widget_show(label);
 
-    addComp(str, r, c);
+    addComp("Text", str, r, c);
 
     // Remove Button
     GtkWidget *button = gtk_button_new_with_label("Remove");
