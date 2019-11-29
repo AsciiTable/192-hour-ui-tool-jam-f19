@@ -12,16 +12,16 @@
 #include <vector>
 using namespace std;
 
-int compInc(){
-    static int count = 0;
-    count++;
-    return count;
+static int textCount = 0;
+int compTextInc(){
+    textCount++;
+    return textCount;
 }
 
-void addText(string txt, gint rpos, gint cpos){
-    static vector<GtkWidget*> txtList;
-    GtkWidget *l = gtk_label_new(txt.c_str());
-    txtList.push_back(l);
+static vector<TextCustom*> txtList;
+void addText(string txt, int rpos, int cpos){
+    TextCustom* tc = new TextCustom(txt, rpos, cpos);
+    txtList.push_back(tc);
 }
 
 gboolean ui_toolkit::delete_event(GtkWidget *widget, GdkEvent *event, gpointer data){
@@ -66,10 +66,25 @@ GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
             gtk_widget_show(space);
         }
     }
-    cout << r << "x" << c << " playground created." << endl;
-    gtk_container_add (GTK_CONTAINER (p->playwin), p->play);
 
     /* Load the Text Boxes */
+    GtkWidget* screenTxt;
+    for(int i = 0; i < txtList.size();i++){
+        screenTxt = gtk_label_new(txtList.at(i)->getString().c_str());
+        int tr = 0;
+        int tc = 0;
+        if(txtList.at(i)->getRowPos() >0)
+            tr = txtList.at(i)->getRowPos()-1;
+
+        if(txtList.at(i)->getColPos() >0)
+            tc = txtList.at(i)->getColPos()-1;
+
+        gtk_grid_attach(GTK_GRID(p->play), screenTxt, tc, tr, 1, 1);
+        gtk_widget_show(screenTxt);
+    }
+
+    cout << r << "x" << c << " playground created." << endl;
+    gtk_container_add (GTK_CONTAINER (p->playwin), p->play);
 
     gtk_widget_show(p->play);
     gtk_widget_show(p->playwin);
@@ -111,7 +126,7 @@ GtkWidget *ui_toolkit::make_text(GtkWidget *widget, gpointer data){
     gtk_grid_attach(GTK_GRID(t->configgrid), label, 0, 2, 1, 1);
     gtk_widget_show(label);
 
-    t->posRow = gtk_spin_button_new_with_range(0, rMax, 1);
+    t->posRow = gtk_spin_button_new_with_range(1, rMax, 1);
     gtk_grid_attach(GTK_GRID(t->configgrid), t->posRow, 1, 2, 1, 1);
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(t->posRow), true);
     gtk_widget_show(t->posRow);
@@ -123,7 +138,7 @@ GtkWidget *ui_toolkit::make_text(GtkWidget *widget, gpointer data){
     gtk_grid_attach(GTK_GRID(t->configgrid), label, 0, 3, 1, 1);
     gtk_widget_show(label);
 
-    t->posCol = gtk_spin_button_new_with_range(0, cMax, 1);
+    t->posCol = gtk_spin_button_new_with_range(1, cMax, 1);
     gtk_grid_attach(GTK_GRID(t->configgrid), t->posCol, 1, 3, 1, 1);
     gtk_spin_button_set_wrap(GTK_SPIN_BUTTON(t->posCol), true);
     gtk_widget_show(t->posCol);
@@ -156,12 +171,12 @@ GtkWidget *ui_toolkit::attach_text(GtkWidget *widget, gpointer data){
     string str = gtk_entry_get_text(GTK_ENTRY(t->userText));
     string lab = "Textbox: "+str+" @ " + to_string(r) + ", " + to_string(c);
     GtkWidget *label = gtk_label_new(lab.c_str());
-    int co = compInc();
-    cout << "Comp Count: " << co << "\n";
+    int co = compTextInc();
+    cout << "Text Comp Count: " << co << "\n";
     gtk_grid_attach(GTK_GRID(t->maingrid), label, 6, co, 1, 1);
     gtk_widget_show(label);
-    TextCustom* tc = new TextCustom(str, r, c);
-    //t->textComponents.push_back(*tc);
+
+    addText(str, r, c);
 
     // Remove Button
     GtkWidget *button = gtk_button_new_with_label("Remove");

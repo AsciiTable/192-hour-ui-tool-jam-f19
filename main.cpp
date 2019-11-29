@@ -112,7 +112,6 @@ int main(int argc, char* argv[]) {
     /* Create Textbox Button */
     button = gtk_button_new_with_label ("Create Text");
 
-
     g_signal_connect (button, "clicked",G_CALLBACK (tool.make_text), ptextp);
     gtk_grid_attach(GTK_GRID(grid), button, 0, 6, 1, 1);
     gtk_widget_show (button);

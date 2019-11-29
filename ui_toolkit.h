@@ -30,7 +30,6 @@ public:
         GtkWidget *playwin, *maingrid, *configwin, *mainwin, *configgrid, *configspace;
         string compString, txtstr;
         gint rp, cp;
-        static vector<TextCustom> textComponents;
     };
     struct PlaygroundButton{
         GtkWidget *button;
