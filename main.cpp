@@ -108,10 +108,9 @@ int main(int argc, char* argv[]) {
     gtk_widget_show(bspin);
     pdimen.borSize = bspin;
 
-    GtkWidget* test = gtk_combo_box_new_with_entry();
-    gtk_grid_attach(GTK_GRID(grid), test, 1, 10, 1, 1);
-
-    gtk_widget_show(test);
+//    GtkWidget* test = gtk_combo_box_new_with_entry();
+//    gtk_grid_attach(GTK_GRID(grid), test, 1, 10, 1, 1);
+//    gtk_widget_show(test);
 
     /* Create Textbox Button */
     button = gtk_button_new_with_label ("Create Text");
