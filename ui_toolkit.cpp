@@ -3,6 +3,7 @@
 //
 
 #include "ui_toolkit.h"
+#include "TextCustom.h"
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -36,6 +37,7 @@ gboolean ui_toolkit::delete_event(GtkWidget *widget, GdkEvent *event, gpointer d
 GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
     GtkWidget *space;
     PlaygroundDimensions *p = (PlaygroundDimensions*)data;
+    PlaygroundText *t;
 
     p->playwin = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     gtk_window_set_title(GTK_WINDOW(p->playwin), "Playground");
@@ -66,6 +68,8 @@ GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
     }
     cout << r << "x" << c << " playground created." << endl;
     gtk_container_add (GTK_CONTAINER (p->playwin), p->play);
+
+    /* Load the Text Boxes */
 
     gtk_widget_show(p->play);
     gtk_widget_show(p->playwin);
@@ -156,6 +160,8 @@ GtkWidget *ui_toolkit::attach_text(GtkWidget *widget, gpointer data){
     cout << "Comp Count: " << co << "\n";
     gtk_grid_attach(GTK_GRID(t->maingrid), label, 6, co, 1, 1);
     gtk_widget_show(label);
+    TextCustom* tc = new TextCustom(str, r, c);
+    //t->textComponents.push_back(*tc);
 
     // Remove Button
     GtkWidget *button = gtk_button_new_with_label("Remove");

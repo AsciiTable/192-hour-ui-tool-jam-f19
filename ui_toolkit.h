@@ -6,6 +6,7 @@
 #define INC_192_HOUR_UI_TOOL_JAM_UI_TOOLKIT_H
 #include <gtk/gtk.h>
 #include <string>
+#include "TextCustom.h"
 using namespace std;
 
 class ui_toolkit {
@@ -29,6 +30,7 @@ public:
         GtkWidget *playwin, *maingrid, *configwin, *mainwin, *configgrid, *configspace;
         string compString, txtstr;
         gint rp, cp;
+        static vector<TextCustom> textComponents;
     };
     struct PlaygroundButton{
         GtkWidget *button;
