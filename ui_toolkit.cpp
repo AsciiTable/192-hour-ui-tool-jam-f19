@@ -3,7 +3,7 @@
 //
 
 #include "ui_toolkit.h"
-#include "TextCustom.h"
+#include "Custom.h"
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,16 +12,16 @@
 #include <vector>
 using namespace std;
 
-static int textCount = 0;
-int compTextInc(){
-    textCount++;
-    return textCount;
+static int compcount = 0;
+int compInc(){
+    compcount++;
+    return compcount;
 }
 
-static vector<TextCustom*> txtList;
-void addText(string txt, int rpos, int cpos){
-    TextCustom* tc = new TextCustom(txt, rpos, cpos);
-    txtList.push_back(tc);
+static vector<Custom*> txtList;
+void addComp(string txt, int rpos, int cpos){
+    Custom* c = new Custom(txt, rpos, cpos);
+    txtList.push_back(c);
 }
 
 gboolean ui_toolkit::delete_event(GtkWidget *widget, GdkEvent *event, gpointer data){
@@ -171,12 +171,12 @@ GtkWidget *ui_toolkit::attach_text(GtkWidget *widget, gpointer data){
     string str = gtk_entry_get_text(GTK_ENTRY(t->userText));
     string lab = "Textbox: "+str+" @ " + to_string(r) + ", " + to_string(c);
     GtkWidget *label = gtk_label_new(lab.c_str());
-    int co = compTextInc();
-    cout << "Text Comp Count: " << co << "\n";
+    int co = compInc();
+    cout << "Comp Count: " << co << "\n";
     gtk_grid_attach(GTK_GRID(t->maingrid), label, 6, co, 1, 1);
     gtk_widget_show(label);
 
-    addText(str, r, c);
+    addComp(str, r, c);
 
     // Remove Button
     GtkWidget *button = gtk_button_new_with_label("Remove");

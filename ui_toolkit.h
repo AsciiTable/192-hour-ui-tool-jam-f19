@@ -6,7 +6,7 @@
 #define INC_192_HOUR_UI_TOOL_JAM_UI_TOOLKIT_H
 #include <gtk/gtk.h>
 #include <string>
-#include "TextCustom.h"
+#include "Custom.h"
 using namespace std;
 
 class ui_toolkit {

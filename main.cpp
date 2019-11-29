@@ -4,7 +4,7 @@
 #include <gtk/gtk.h>
 #include <string>
 #include "ui_toolkit.h"
-#include "TextCustom.h"
+#include "Custom.h"
 using namespace std;
 
 int main(int argc, char* argv[]) {
@@ -147,33 +147,11 @@ int main(int argc, char* argv[]) {
     gtk_grid_attach(GTK_GRID(grid), space, 5, 0, 1, 1);
     gtk_widget_show(space);
 
-    /* List of Text Components */
+    /* List of Components */
     // Do something to allow for scrolling if On-Screen Components gets too long
-    label = gtk_label_new("On-Screen Text Components");
+    label = gtk_label_new("On-Screen Components");
     gtk_label_set_xalign(GTK_LABEL(label), 0);
     gtk_grid_attach(GTK_GRID(grid), label, 6, 0, 1, 1);
-    gtk_widget_show(label);
-
-    /* Space for Formatting */
-    space = gtk_label_new("");
-    gtk_grid_attach(GTK_GRID(grid), space, 8, 0, 1, 1);
-    gtk_widget_show(space);
-
-    /* Vertical Separator */
-    sep = gtk_separator_new(GTK_ORIENTATION_VERTICAL);
-    gtk_grid_attach(GTK_GRID(grid), sep, 9, 0, 1, 11);
-    gtk_widget_show(sep);
-
-    /* Space for Formatting */
-    space = gtk_label_new("");
-    gtk_grid_attach(GTK_GRID(grid), space, 10, 0, 1, 1);
-    gtk_widget_show(space);
-
-    /* List of Button Components */
-    // Do something to allow for scrolling if On-Screen Components gets too long
-    label = gtk_label_new("On-Screen Button Components");
-    gtk_label_set_xalign(GTK_LABEL(label), 0);
-    gtk_grid_attach(GTK_GRID(grid), label, 11, 0, 1, 1);
     gtk_widget_show(label);
 
     gtk_widget_show(grid);

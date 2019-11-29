@@ -3,7 +3,15 @@
 //
 
 #include "Custom.h"
-Custom::Custom(string s, int r, int c) {
+Custom::Custom(){
+    type = "";
+    txt = "";
+    rpos = 0;
+    cpos = 0;
+}
+
+Custom::Custom(string type, string s, int r, int c) {
+    type = "Custom";
     txt = s;
     rpos = r;
     cpos = c;
@@ -19,4 +27,8 @@ int Custom::getRowPos(){
 
 int Custom::getColPos(){
     return cpos;
+}
+
+string Custom::toString() {
+    return type + ": " + txt + " @ " + to_string(rpos) + ", " + to_string(cpos);
 }
