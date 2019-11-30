@@ -106,7 +106,6 @@ GtkWidget *ui_toolkit::make_text(GtkWidget *widget, gpointer data){
     gtk_grid_set_column_spacing(GTK_GRID(t->configgrid),15);
     gtk_container_add (GTK_CONTAINER (t->configwin), t->configgrid);
 
-
     /* Entry (Textbox) */
     label = gtk_label_new("Text");
     gtk_label_set_xalign(GTK_LABEL(label), 0);
@@ -159,11 +158,11 @@ GtkWidget *ui_toolkit::make_text(GtkWidget *widget, gpointer data){
     gtk_widget_show(t->configgrid);
     gtk_widget_show(t->configwin);
 
-    // Add new Text manager to On-Screen Components w/ Remove Button
     cout << "Textbox making in progress!\n";
     return t->userText;
 }
 
+// Add new Text manager to On-Screen Components w/ Remove Button
 GtkWidget *ui_toolkit::attach_text(GtkWidget *widget, gpointer data){
     PlaygroundText* t = (PlaygroundText*) data;
     int r = gtk_spin_button_get_value_as_int (GTK_SPIN_BUTTON(t->posRow));

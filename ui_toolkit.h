@@ -23,7 +23,6 @@ public:
         GtkWidget *playwin;
     };
     struct PlaygroundText{
-        GtkWidget *textbox;
         GtkWidget *userText;
         GtkWidget *posRow, *posCol, *maxRow, *maxCol;
         GtkWidget *play;
