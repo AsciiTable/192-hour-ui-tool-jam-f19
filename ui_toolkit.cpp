@@ -61,7 +61,7 @@ GtkWidget *ui_toolkit::make_playground(GtkWidget *widget, gpointer data){
 
     for(int i = 0; i < r; i++){
         for(int j = 0; j < c; j++){
-            space = gtk_label_new("__|");
+            space = gtk_label_new(" ");
             gtk_grid_attach(GTK_GRID(p->play), space, j, i, 1,  1);
             gtk_widget_show(space);
         }
