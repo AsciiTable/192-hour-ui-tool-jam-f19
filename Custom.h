@@ -42,6 +42,8 @@ public:
         cpos = c;
     };
     // Functionalities
+    // Change color of window
+    //
 };
 
 #endif //INC_192_HOUR_UI_TOOL_JAM_CUSTOM_H
